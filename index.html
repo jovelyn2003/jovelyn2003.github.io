@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ed & Louiella — Wedding Invitation</title>
+    <meta name="description" content="You are cordially invited to the wedding of Ed & Louiella, August 1, 2026 in Claveria, Misamis Oriental." />
+    <meta property="og:title" content="Ed & Louiella — Wedding Invitation" />
+    <meta property="og:description" content="August 1, 2026 · Claveria, Misamis Oriental" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" />
+    <style>
+         :root {
+            --bg: #fbf3ec;
+            --fg: #4a2a2a;
+            --primary: #aa9449;
+            --primary-fg: #fbf3ec;
+            --cream: #faf5ee;
+            --rose: #c98a82;
+            --mauve: #9d6c87;
+            --gold: #c69a4d;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-script: 'Pinyon Script', cursive;
+            --font-body: 'Cormorant Garamond', serif;
+            --font-sans: 'Quicksand', sans-serif;
+            --font-mail: 'Caveat', cursive;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        
+        html,
+        body {
+            overflow-x: hidden
+        }
+        
+        body {
+            background-color: #faf5ee;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(253, 246, 237, 0.7) 0%, rgba(246, 236, 224, 0.4) 100%),
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><filter id='paper'><feTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3' result='noise'/><feColorMatrix type='matrix' values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100' height='100' filter='url(%23paper)' fill='none'/></svg>");
+            color: var(--fg);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            line-height: 1.6;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-display);
+            letter-spacing: .02em;
+            line-height: 1.15
+        }
+        
+        img {
+            max-width: 100%;
+            display: block
+        }
+        /* ============ ENVELOPE ============ */
+        
+        .envelope-wrap {
+            perspective: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem
+        }
+        
+        .envelope {
+            position: relative;
+            width: min(92vw, 520px);
+            aspect-ratio: 3/2;
+            background: linear-gradient(135deg, #f0d4ca, #e6b8aa);
+            border-radius: 6px;
+            box-shadow: 0 30px 80px -20px rgba(120, 60, 60, .4), 0 10px 30px -10px rgba(100, 50, 50, .3);
+            cursor: pointer;
+            transition: transform .3s;
+        }
+        
+        .envelope:active {
+            transform: scale(.98)
+        }
+        
+        .envelope-body {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #f3dfd4, #e8c0b3);
+            border-radius: 6px;
+            overflow: hidden
+        }
+        
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, #e6b8aa, #d99c8a);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 1.2s cubic-bezier(.7, -0.2, .3, 1.2);
+            z-index: 30;
+            box-shadow: 0 4px 10px rgba(80, 40, 30, .15);
+        }
+        
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1
+        }
+        
+        .envelope-front {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 55%;
+            background: linear-gradient(180deg, #edc4b3, #dba08e);
+            clip-path: polygon(0 100%, 0 0, 50% 80%, 100% 0, 100% 100%);
+            z-index: 20;
+        }
+        
+        .envelope-seal {
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #7a2a2a, #4a1818);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8c97a;
+            font-family: var(--font-script);
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(60, 20, 20, .5), inset 0 -4px 8px rgba(30, 10, 10, .4);
+            z-index: 35;
+            transition: opacity .4s ease;
+        }
+        
+        .envelope.open .envelope-seal {
+            opacity: 0
+        }
+        
+        .letter {
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            bottom: 10%;
+            background: var(--cream);
+            height: 70%;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(80, 40, 30, .2);
+            z-index: 10;
+            padding: 14% 8% 8%;
+            text-align: center;
+            transition: transform 1.4s cubic-bezier(.4, 0, .2, 1) .4s, opacity .4s;
+        }
+        
+        .envelope.open .letter {
+            transform: translateY(-65%)
+        }
+        /* ============ PAPER ============ */
+        
+        .paper {
+            background: radial-gradient(ellipse at top left, #fbf3e6 0%, transparent 60%), radial-gradient(ellipse at bottom right, #f7e6dd 0%, transparent 60%), var(--cream);
+            box-shadow: 0 30px 60px -20px rgba(120, 60, 60, .25), 0 0 0 1px rgba(180, 140, 120, .4);
+            <img src="images/flower1.png" class="flower tl"><img src="images/flower2.png" class="flower tr"><img src="images/flower3.png" class="flower bl"><img src="images/flower4.png" class="flower br">
+        }
+        /* ============ PETALS ============ */
+        
+        @keyframes petal-fall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0
+            }
+            10% {
+                opacity: .8
+            }
+            90% {
+                opacity: .7
+            }
+            100% {
+                transform: translateY(110vh) translateX(var(--x, 80px)) rotate(720deg);
+                opacity: 0
+            }
+        }
+        
+        .petal {
+            position: absolute;
+            top: -5vh;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(ellipse at 30% 30%, #fce8e0, #e0a89c);
+            border-radius: 80% 0 80% 0;
+            animation: petal-fall linear infinite;
+            pointer-events: none;
+            opacity: .8;
+            filter: blur(.3px);
+        }
+        
+        /* ============ INTERACTIVE GARDEN EFFECTS ============ */
+        .flower-svg {
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+        }
+        .flower-svg:hover {
+            transform: scale(1.06) rotate(4deg) !important;
+            opacity: 1 !important;
+        }
+        .flower-svg[style*="rotate(180deg)"]:hover {
+            transform: scale(1.06) rotate(184deg) !important;
+        }
+        
+        .petal-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%) rotate(var(--rot-start));
+            animation: trail-fade 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            opacity: 0.9;
+        }
+        
+        @keyframes trail-fade {
+            to {
+                transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) rotate(var(--rot-end)) scale(0.2);
+                opacity: 0;
+            }
+        }
+        
+        .petal-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%) rotate(var(--rot-start));
+            animation: burst-fade 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            opacity: 0.95;
+        }
+        
+        @keyframes burst-fade {
+            to {
+                transform: translate(calc(-50% + var(--dest-x)), calc(-50% + var(--dest-y))) rotate(var(--rot-end)) scale(0.1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1) rotate(0deg); }
+            10% { transform: scale(1.08) rotate(-2deg); }
+            20% { transform: scale(0.98) rotate(0deg); }
+            30% { transform: scale(1.08) rotate(2deg); }
+            45% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        .btn-pump {
+            display: inline-block !important;
+            animation: heartbeat 1.8s infinite ease-in-out;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s !important;
+            transform-origin: center;
+        }
+        .btn-pump:hover {
+            animation: none;
+            transform: scale(1.08) translateY(-3px) !important;
+            box-shadow: 0 15px 35px -8px rgba(0,0,0,0.35) !important;
+        }
+        
+        /* ============ MUSIC TOGGLE ============ */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(250, 245, 238, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(198, 154, 77, 0.45);
+            box-shadow: 0 10px 25px rgba(120, 60, 60, 0.18);
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            outline: none;
+        }
+        .music-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--cream);
+            box-shadow: 0 12px 30px rgba(120, 60, 60, 0.28);
+        }
+        .music-icon {
+            width: 22px;
+            height: 22px;
+        }
+        .music-btn.playing .music-icon {
+            animation: spin 6s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .music-btn.muted::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 24px;
+            background: #c44a3a;
+            transform: rotate(45deg);
+            border-radius: 99px;
+        }
+        
+        .paper {
+            position: relative;
+            z-index: 2;
+            background: radial-gradient(ellipse at top left, #fbf3e6 0%, transparent 60%), radial-gradient(ellipse at bottom right, #f7e6dd 0%, transparent 60%), var(--cream);
+            box-shadow: 0 30px 60px -20px rgba(120, 60, 60, .25), 0 0 0 1px rgba(180, 140, 120, .4);
+        }
+        
+        /* ============ GARDEN FRAME & BORDER ============ */
+        .garden-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gflower {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.88;
+            filter: drop-shadow(0 15px 30px rgba(120,60,60,0.12));
+            transition: transform 0.8s ease;
+        }
+        
+        .tl-flower {
+            top: -6%;
+            left: -6%;
+            width: 28vw;
+            max-width: 320px;
+            transform: rotate(-5deg);
+        }
+        .tr-flower {
+            top: -6%;
+            right: -6%;
+            width: 30vw;
+            max-width: 340px;
+            transform: rotate(12deg);
+        }
+        .bl-flower {
+            bottom: -8%;
+            left: -8%;
+            width: 35vw;
+            max-width: 380px;
+            transform: rotate(8deg);
+        }
+        .br-flower {
+            bottom: -8%;
+            right: -8%;
+            width: 38vw;
+            max-width: 410px;
+            transform: rotate(-12deg);
+        }
+        
+        .mid-left-flower {
+            top: 45%;
+            left: -10%;
+            width: 22vw;
+            max-width: 260px;
+            transform: translateY(-50%) rotate(40deg);
+            opacity: 0.7;
+        }
+        .mid-right-flower {
+            top: 55%;
+            right: -10%;
+            width: 24vw;
+            max-width: 280px;
+            transform: translateY(-50%) rotate(-30deg);
+            opacity: 0.7;
+        }
+
+        .gold-border {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(198, 154, 77, 0.45);
+            pointer-events: none;
+            z-index: 999;
+        }
+        .gold-border::before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(198, 154, 77, 0.25);
+        }
+        
+        @media (max-width: 768px) {
+            .tl-flower { width: 45vw; top: -3%; left: -8%; }
+            .tr-flower { width: 50vw; top: -4%; right: -8%; }
+            .bl-flower { width: 52vw; bottom: -5%; left: -9%; }
+            .br-flower { width: 55vw; bottom: -5%; right: -9%; }
+            .mid-left-flower, .mid-right-flower { display: none; }
+            .gold-border { top: 8px; left: 8px; right: 8px; bottom: 8px; }
+        }
+        
+        /* Minimal Vine Borders for Garden Theme */
+        .paper::before,
+        .paper::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0.65;
+            transition: transform 0.6s ease;
+        }
+        .paper::before {
+            top: 8px;
+            left: 8px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238ea88d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22C2 12 10 4 20 4"/><path d="M9 11c0-2 2-4 4-4"/><path d="M5 16c0-1.5 1-3 2.5-3.5"/></svg>');
+        }
+        .paper::after {
+            bottom: 8px;
+            right: 8px;
+            transform: rotate(180deg);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238ea88d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22C2 12 10 4 20 4"/><path d="M9 11c0-2 2-4 4-4"/><path d="M5 16c0-1.5 1-3 2.5-3.5"/></svg>');
+        }
+        .paper:hover::before {
+            transform: scale(1.1) translate(1px, 1px);
+        }
+        .paper:hover::after {
+            transform: rotate(180deg) scale(1.1) translate(1px, 1px);
+        }
+        
+        #countdown .paper::before,
+        #countdown .paper::after,
+        .paper.rounded-full::before,
+        .paper.rounded-full::after {
+            display: none !important;
+        }
+        
+        @keyframes sway {
+            0%,
+            100% {
+                transform: rotate(-3deg) translateY(0)
+            }
+            50% {
+                transform: rotate(3deg) translateY(-6px)
+            }
+        }
+        
+        .sway {
+            animation: sway 6s ease-in-out infinite;
+            transform-origin: bottom center
+        }
+        
+        @keyframes float-slow {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg)
+            }
+            50% {
+                transform: translateY(-20px) rotate(8deg)
+            }
+        }
+        
+        .float-slow {
+            animation: float-slow 9s ease-in-out infinite
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0
+            }
+            100% {
+                background-position: 200% 0
+            }
+        }
+        
+        .shimmer-text {
+            background: linear-gradient( 90deg, #ffffff 0%, #fff8dc 25%, #ffd700 50%, #fff8dc 75%, #ffffff 100%);
+            background-size: 300% 100%;
+            background-position: -200% 0;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 8s linear infinite;
+        }
+        /* ============ UTIL ============ */
+        
+        .center {
+            text-align: center
+        }
+        
+        .section {
+            padding: 5rem 1rem;
+            position: relative
+        }
+        
+        .maxw {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+        
+        .maxw-sm {
+            max-width: 600px;
+            margin: 0 auto
+        }
+        
+        .font-display {
+            font-family: var(--font-display)
+        }
+        
+        .font-script {
+            font-family: var(--font-script)
+        }
+        
+        .font-mail {
+            font-family: var(--font-mail)
+        }
+        
+        .font-sans {
+            font-family: var(--font-sans)
+        }
+        
+        .tracking-wider {
+            letter-spacing: .1em
+        }
+        
+        .tracking-widest {
+            letter-spacing: .4em
+        }
+        
+        .text-uppercase {
+            text-transform: uppercase
+        }
+        
+        .text-primary {
+            color: var(--primary)
+        }
+        
+        .text-muted {
+            color: #8a6a60;
+            font-style: italic
+        }
+        
+        .text-fg {
+            color: var(--fg)
+        }
+        
+        .bg-cream {
+            background: var(--cream)
+        }
+        
+        .bg-rose {
+            background: var(--rose)
+        }
+        
+        .bg-primary {
+            background: var(--primary)
+        }
+        
+        .text-cream {
+            color: var(--cream)
+        }
+        
+        .text-white {
+            color: #fff
+        }
+        
+        .rounded-full {
+            border-radius: 9999px
+        }
+        
+        .rounded-2xl {
+            border-radius: 1rem
+        }
+        
+        .rounded-3xl {
+            border-radius: 1.5rem
+        }
+        
+        .rounded-xl {
+            border-radius: .75rem
+        }
+        
+        .p-3 {
+            padding: .75rem
+        }
+        
+        .p-4 {
+            padding: 1rem
+        }
+        
+        .p-6 {
+            padding: 1.5rem
+        }
+        
+        .p-8 {
+            padding: 2rem
+        }
+        
+        .p-10 {
+            padding: 2.5rem
+        }
+        
+        .p-14 {
+            padding: 3.5rem
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+        
+        .py-2 {
+            padding-top: .5rem;
+            padding-bottom: .5rem
+        }
+        
+        .py-3 {
+            padding-top: .75rem;
+            padding-bottom: .75rem
+        }
+        
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+        
+        .py-24 {
+            padding-top: 6rem;
+            padding-bottom: 6rem
+        }
+        
+        .py-28 {
+            padding-top: 7rem;
+            padding-bottom: 7rem
+        }
+        
+        .mt-2 {
+            margin-top: .5rem
+        }
+        
+        .mt-3 {
+            margin-top: .75rem
+        }
+        
+        .mt-4 {
+            margin-top: 1rem
+        }
+        
+        .mt-6 {
+            margin-top: 1.5rem
+        }
+        
+        .mt-8 {
+            margin-top: 2rem
+        }
+        
+        .mt-10 {
+            margin-top: 2.5rem
+        }
+        
+        .mt-14 {
+            margin-top: 3.5rem
+        }
+        
+        .mt-16 {
+            margin-top: 4rem
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+        
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+        
+        .gap-3 {
+            gap: .75rem
+        }
+        
+        .gap-6 {
+            gap: 1.5rem
+        }
+        
+        .gap-8 {
+            gap: 2rem
+        }
+        
+        .grid {
+            display: grid
+        }
+        
+        .flex {
+            display: flex
+        }
+        
+        .flex-col {
+            flex-direction: column
+        }
+        
+        .items-center {
+            align-items: center
+        }
+        
+        .justify-center {
+            justify-content: center
+        }
+        
+        .justify-between {
+            justify-content: space-between
+        }
+        
+        .relative {
+            position: relative
+        }
+        
+        .absolute {
+            position: absolute
+        }
+        
+        .fixed {
+            position: fixed
+        }
+        
+        .overflow-hidden {
+            overflow: hidden
+        }
+        
+        .z-0 {
+            z-index: 0
+        }
+        
+        .z-10 {
+            z-index: 10
+        }
+        
+        .z-20 {
+            z-index: 20
+        }
+        
+        .min-h-screen {
+            min-height: 100vh
+        }
+        
+        .w-full {
+            width: 100%
+        }
+        
+        .w-56 {
+            width: 14rem
+        }
+        
+        .w-64 {
+            width: 16rem
+        }
+        
+        .w-72 {
+            width: 18rem
+        }
+        
+        .h-64 {
+            height: 16rem
+        }
+        
+        .h-72 {
+            height: 18rem
+        }
+        
+        .aspect-3-4 {
+            aspect-ratio: 3/4
+        }
+        
+        .aspect-4-5 {
+            aspect-ratio: 4/5
+        }
+        
+        .aspect-16-10 {
+            aspect-ratio: 16/10
+        }
+        
+        .object-cover {
+            object-fit: cover
+        }
+        
+        .shadow {
+            box-shadow: 0 10px 30px -10px rgba(80, 40, 30, .3)
+        }
+        
+        .shadow-lg {
+            box-shadow: 0 20px 50px -15px rgba(80, 40, 30, .4)
+        }
+        
+        .shadow-2xl {
+            box-shadow: 0 30px 80px -20px rgba(80, 40, 30, .5)
+        }
+        
+        .border {
+            border: 1px solid rgba(180, 140, 120, .4)
+        }
+        
+        .border-rose {
+            border-color: var(--rose)
+        }
+        
+        .opacity-90 {
+            opacity: .9
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg)
+        }
+        
+        .-rotate-2 {
+            transform: rotate(-2deg)
+        }
+        
+        .italic {
+            font-style: italic
+        }
+        
+        .leading-relaxed {
+            line-height: 1.7
+        }
+        
+        .leading-none {
+            line-height: 1
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s infinite
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .5
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+        
+        @media(min-width:768px) {
+            .md-grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+            .md-text-5xl {
+                font-size: 3.75rem;
+                line-height: 1
+            }
+            .md-text-6xl {
+                font-size: 4.5rem;
+                line-height: 1
+            }
+            .md-text-7xl {
+                font-size: 5.5rem;
+                line-height: 1
+            }
+            .md-text-9xl {
+                font-size: 8rem;
+                line-height: 1
+            }
+            .md-gap-6 {
+                gap: 1.5rem
+            }
+            .md-w-72 {
+                width: 18rem
+            }
+            .md-w-80 {
+                width: 20rem
+            }
+            .md-aspect-16-10 {
+                aspect-ratio: 16/10
+            }
+            .md-p-14 {
+                padding: 3.5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="petals-main" style="pointer-events:none;position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:9999"></div>
+
+    <!-- ============= INTRO ENVELOPE ============= -->
+    <div id="intro" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2.5rem 1rem;background:radial-gradient(ellipse at top,#fae3e0,#f4cfd4 60%,#f0c4be);position:relative">
+        <div id="petals-intro" style="pointer-events:none;position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0"></div>
+        <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;top:0;left:0;width:11rem;opacity:.9" aria-hidden>
+    <g class="sway">
+      <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+      <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+      <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+      <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+      <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+      <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+      <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+      <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+      <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+    </g>
+  </svg>
+        <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;bottom:0;right:0;width:11rem;opacity:.9;transform:rotate(180deg)" aria-hidden>
+    <g class="sway">
+      <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+      <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+      <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+      <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+      <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+      <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+      <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+      <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+      <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+    </g>
+  </svg>
+
+        <div class="envelope-wrap">
+            <div class="center font-script" style="font-size:2.25rem;color:var(--primary);text-shadow:0 1px 2px rgba(0,0,0,.05)">A letter for you…</div>
+
+            <button id="envelope" class="envelope" aria-label="Open envelope" style="border:none;padding:0">
+      <div class="envelope-body">
+        <div class="letter">
+          <div class="font-script" style="font-size:1.5rem;color:var(--primary)">You're Invited</div>
+          <div class="mt-2 font-display" style="font-size:1.875rem;color:var(--fg)">Ed &amp; Louiella</div>
+          <div class="mt-1 text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Sealed With Love</div>
+        </div>
+      </div>
+      <div class="envelope-front"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal font-script">E&amp;L</div>
+    </button>
+
+            <p id="tap-hint" class="text-muted" style="font-size:.875rem;animation:pulse 2s infinite">tap the envelope to open</p>
+
+            <form id="pwd-form" style="display:none;width:100%;max-width:24rem" class="fade-in">
+                <div class="paper rounded-xl p-6 center">
+                    <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Sealed with love</div>
+                    <h3 class="font-display" style="font-size:1.5rem;margin-top:.5rem">Enter the date code</h3>
+                    <p class="text-muted" style="font-size:.875rem;margin-top:.25rem">Hint: our wedding day (MMDDYY)</p>
+                    <input id="pwd-input" type="password" inputmode="numeric" placeholder="• • • • • •" style="margin-top:1rem;width:100%;text-align:center;letter-spacing:.5em;font-size:1.125rem;background:rgba(250,245,238,.6);border:1px solid rgba(160,83,74,.3);border-radius:.375rem;padding:.75rem;outline:none;font-family:var(--font-sans);color:var(--fg)"
+                    />
+                    <div id="pwd-err" style="color:#c44a3a;font-size:.875rem;margin-top:.5rem;display:none">Hmm, that doesn't match. Try again ✦</div>
+                    <button type="submit" class="rounded-full bg-primary text-cream w-full" style="margin-top:1rem;padding:.75rem;font-family:var(--font-sans);letter-spacing:.05em;font-size:.875rem;border:none;cursor:pointer">
+          Open the Letter
+        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============= MAIN INVITATION ============= -->
+    <main id="main" style="display:none;position:relative;overflow:hidden">
+        <!-- Fixed Floral Frame (Vintage Garden Theme) -->
+        <div class="garden-frame">
+            <img src="images/f2.png" class="gflower tr-flower" alt="">
+            <img src="images/f3.png" class="gflower bl-flower" alt="">
+            <img src="images/f4.png" class="gflower br-flower" alt="">
+            <img src="images/f5.png" class="gflower tl-flower" alt="">
+            <img src="images/f1.png" class="gflower mid-left-flower" alt="">
+            <img src="images/f1.png" class="gflower mid-right-flower" alt="">
+        </div>
+        <div class="gold-border"></div>
+
+
+
+        <!-- HERO -->
+        <section class="section center" style="
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            background-image:url('images/1.jfif');
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+        ">
+            <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;top:-1.5rem;left:-1.5rem;width:20rem;opacity:.9" aria-hidden>
+      <g class="sway">
+        <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+        <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+        <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+        <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+        <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+        <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+        <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+      </g>
+    </svg>
+            <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;bottom:-1.5rem;right:-1.5rem;width:20rem;opacity:.9;transform:rotate(180deg)" aria-hidden>
+      <g class="sway">
+        <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+        <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+        <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+        <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+        <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+        <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+        <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+      </g>
+    </svg>
+
+            <div class="font-mail" style="font-size:1.25rem;color:rgb(255, 255, 255);transform:rotate(-2deg)">— from our hearts to yours —</div>
+            <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#ffffff;margin-top:1.5rem">The Wedding Of</div>
+            <h1 class="font-script shimmer-text" style="font-size:4.5rem;line-height:1;margin-top:1rem">Ed <span class="font-display italic" style="font-size:3rem;color:var(--mauve);vertical-align:middle">&amp;</span> Louiella</h1>
+            <div class="text-uppercase tracking-widest" style="font-size:.875rem;color:#ffffff;margin-top:1.5rem">August · 01 · 2026</div>
+
+
+            <p class="font-body italic" style="margin-top:2.5rem;font-size:1.25rem;max-width:36rem;color:rgb(255, 255, 255);line-height:1.7">
+                "Together with their families, they request the honor of your presence as they celebrate their marriage."
+            </p>
+
+            <div class="text-primary" style="margin-top:2.5rem;animation:bounce 2s infinite;opacity:.6">↓ scroll · the letter continues</div>
+        </section>
+
+        <!-- MAIL LETTER -->
+        <section class="section" style="background:linear-gradient(180deg, rgba(247, 230, 221, 0.4), rgba(250, 227, 224, 0.5))">
+            <div class="paper maxw-sm" style="padding:2rem 3.5rem;border-radius:.375rem;position:relative">
+ 
+                 <img src="images/f1.png" style="position:absolute;
+                     top:10px;
+                     right:10px;
+                     width:80px;
+                     height:auto;
+                     z-index:1;
+                     pointer-events:none;
+                     opacity:.8;">
+ 
+                 <div style="position:relative;z-index:2">
+                     <div style="display:flex;justify-content:space-between;font-size:.75rem;color:#8a6a60;border-bottom:1px solid rgba(180,140,120,.4);padding-bottom:1rem;margin-bottom:1.5rem;font-family:var(--font-sans)">
+                         <span>From: Ed &amp; Louiella</span>
+                         <span>To: Our Beloved Guest</span>
+                     </div>
+                     <div class="font-mail" style="font-size:1.5rem;color:rgba(74,42,42,.9);line-height:1.6">
+                         <p>Dearest friend,</p>
+                         <p style="margin-top:1rem">It is with hearts overflowing with joy that we write to you. After years of laughter, growth, and quiet promises, we are saying <em>"I do."</em></p>
+                         <p style="margin-top:1rem">And it simply wouldn't feel right without you there.</p>
+                         <p style="margin-top:1rem;text-align:right">— Ed &amp; Louiella</p>
+                     </div>
+                 </div>
+             </div>
+         </section>
+        <!-- COUNTDOWN + SCRATCH -->
+        <section class="section center" style="background:linear-gradient(180deg, rgba(247,230,221,0.5), rgba(250,227,224,0.6))">
+            <div class="maxw">
+                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Counting the days</div>
+                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Until forever begins</h2>
+                <div id="countdown" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:36rem;margin-left:auto;margin-right:auto"></div>
+
+                <div style="margin-top:4rem">
+                    <p class="text-muted" style="font-size:.875rem;margin-bottom:1rem">✦ Scratch below to reveal the date ✦</p>
+                    <div id="scratch-wrap" style="position:relative;width:320px;height:150px;margin:0 auto;border-radius:1rem;overflow:hidden;touch-action:none;user-select:none">
+                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--cream);text-align:center;padding:1rem">
+                            <div>
+                                <div class="font-script" style="font-size:1.875rem;color:var(--primary)">Save the Date</div>
+                                <div class="font-display" style="font-size:1.5rem;margin-top:.25rem">August 1, 2026</div>
+                                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60;margin-top:.25rem">Saturday · 8:00 AM</div>
+                            </div>
+                        </div>
+                        <canvas id="scratch" style="position:absolute;inset:0;cursor:grab;border-radius:inherit;width:320px;height:150px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CEREMONY -->
+        <section class="section" style="background:linear-gradient(180deg, rgba(252, 232, 240, 0.5), rgba(250, 227, 224, 0.6))">
+            <div class="maxw-sm">
+                <div class="paper rounded-2xl p-8 center" style="position:relative;overflow:hidden;border:none;">
+                    <video autoplay loop muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <source src="images/WedVid.mp4" type="video/mp4">
+                    </video>
+                    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255, 255, 255, 0.7);backdrop-filter:blur(2px);z-index:2;"></div>
+                    
+                    <div style="position:relative;z-index:3;">
+                        <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60;">Wedding Ceremony</div>
+                        <div class="font-display" style="font-size:1.875rem;color:var(--primary);margin-top:.5rem">August 1, 2026</div>
+                        <div class="font-mail" style="font-size:1.5rem;color:rgba(74,42,42,.8);margin-top:.5rem">8:00 AM</div>
+                        <div style="margin-top:1rem;border-top:1px solid rgba(180,140,120,.4);padding-top:1rem;font-size:.875rem;color:rgba(74,42,42,.7);font-style:italic">Rancho Sports Bar, Lanise, Claveria, Mis. Or.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO -->
+        <section class="section" style="background:linear-gradient(180deg, rgba(250, 227, 224, 0.5), rgba(251, 240, 216, 0.5))">
+            <div style="max-width:48rem;margin:0 auto">
+                <div style="position:relative;aspect-ratio:16/10;border-radius:1rem;overflow:hidden;box-shadow:0 30px 80px -20px rgba(80,40,30,.5)">
+
+                    <img src="./images/2.jpg" alt="Ed and Louiella embracing" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(160,83,74,.4),transparent)"></div>
+
+                    <div style="position:absolute;bottom:1.5rem;left:0;right:0;text-align:center;color:#fff">
+                        <div class="font-script" style="font-size:3rem">two hearts, one journey</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUESTS -->
+        <section class="section center" style="background:linear-gradient(180deg, rgba(251, 240, 216, 0.55), rgba(247, 235, 225, 0.65))">
+            <div class="maxw">
+                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Our Honored Guests</div>
+                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Entourage</h2>
+
+
+               
+
+                <a href="entourage.html?v=2" class="rounded-full bg-primary text-cream inline-block btn-pump" style="margin-top:4.5rem;padding:1rem 2rem;font-family:var(--font-sans);letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.3)">
+        ✦ View Our Entourage ✦
+      </a>
+            </div>
+        </section>
+
+
+
+        <!-- DRESS CODE -->
+        <section class="section center" style="background:linear-gradient(180deg, rgba(230, 239, 216, 0.55), rgba(221, 238, 224, 0.65))">
+            <div class="maxw-sm">
+                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Dress Code</div>
+                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Formal / Semi-Formal</h2>
+                <p class="text-muted" style="margin-top:1rem">Preferred colors — any soft pastel hue.</p>
+
+                <div style="margin-top:2.5rem;width:16rem;height:16rem;margin-left:auto;margin-right:auto;position:relative">
+                    <div class="sway" style="position:absolute;inset:0;border-radius:9999px;background:conic-gradient(#f4c2c2 0deg 45deg,#ffd8b1 45deg 90deg,#fff1b6 90deg 135deg,#c9e4ca 135deg 180deg,#b5d8eb 180deg 225deg,#c8b6e2 225deg 270deg,#e2c2d8 270deg 315deg,#f0dab1 315deg 360deg)"></div>
+                    <div style="position:absolute;inset:1.5rem;border-radius:9999px;background:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem">
+                        <div>
+                            <div class="font-script" style="font-size:1.875rem;color:var(--primary)">Pastels</div>
+                            <div class="text-uppercase tracking-widest" style="font-size:.625rem;color:#8a6a60;margin-top:.25rem">pick your hue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paper rounded-full inline-block" style="margin-top:2rem;padding:.75rem 1.5rem;font-size:.875rem;color:rgba(74,42,42,.8);font-style:italic">
+                    Please refrain from wearing <span class="font-display" style="color:var(--primary)">white</span>.
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="section center" style="background:linear-gradient(180deg, rgba(250, 227, 224, 0.55), rgba(244, 207, 212, 0.65))">
+            <div class="paper rounded-3xl maxw-sm" style="padding:2.5rem 3.5rem;margin:0 auto">
+                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">RSVP</div>
+                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Will you join us?</h2>
+                <p class="text-muted" style="margin-top:.75rem">Kindly confirm your attendance on or before <span class="font-display" style="font-style:normal;color:var(--primary)">July 27, 2026</span>.</p>
+
+                <div class="bg-cream" style="margin-top:2rem;display:inline-block;padding:1.5rem;border-radius:1rem;box-shadow:0 10px 30px -10px rgba(0,0,0,.2)">
+                    <img src="images/QR.png" alt="RSVP QR Code" style="width:240px;height:240px;object-fit:contain;display:block;border-radius:.5rem;">
+                </div>
+                <p class="text-uppercase" style="font-size:.75rem;letter-spacing:.2em;color:#8a6a60;margin-top:1rem">scan to RSVP</p>
+
+                <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.875rem;color:rgba(74,42,42,.8)">
+                    <div class="paper rounded-full" style="padding:.5rem 1rem">0965 559 0462</div>
+                    <div class="paper rounded-full" style="padding:.5rem 1rem">louiellaruthbagongon@gmail.com</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REMINDERS / GIFT -->
+        <section class="section" style="background:linear-gradient(180deg, rgba(250,227,224,0.6), rgba(244,207,212,0.7))">
+            <div class="maxw grid md-grid-cols-2 gap-6" style="grid-template-columns:1fr">
+                <div class="paper rounded-2xl p-8 center">
+                    <h3 class="font-display" style="font-size:1.5rem;color:var(--primary);">Friendly Reminder</h3>
+                    <p class="text-muted" style="margin-top:.75rem">Kindly keep your phones silent during the ceremony.</p>
+                </div>
+                <div class="paper rounded-2xl p-8 center">
+                    <h3 class="font-display" style="font-size:1.5rem;color:var(--primary);">A Note on Gifts</h3>
+                    <p class="text-muted" style="margin-top:.75rem">Your presence is the greatest gift of all. Should you wish to bless us further, a monetary gift would be sincerely appreciated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- THANK YOU -->
+        <section class="section center" style="
+            background-image: url('images/4.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        ">
+            <!-- Light overlay for text legibility -->
+            <div style="position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); z-index: 1;"></div>
+            
+            <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;top:-1rem;left:-1rem;width:10rem;opacity:.8;z-index:2;" aria-hidden>
+      <g class="sway">
+        <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+        <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+        <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+        <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+        <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+        <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+        <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+      </g>
+    </svg>
+            <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;bottom:-1rem;right:-1rem;width:10rem;opacity:.8;transform:rotate(180deg);z-index:2;" aria-hidden>
+      <g class="sway">
+        <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+        <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+        <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+        <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+        <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+        <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+        <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+        <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+      </g>
+    </svg>
+            
+            <div style="position: relative; z-index: 3;">
+                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Thank you</div>
+                <h2 class="font-script shimmer-text" style="font-size:4.5rem;margin-top:.75rem">With all our love</h2>
+                <p class="font-mail" style="max-width:36rem;margin:1.5rem auto 0;font-size:1.5rem;color:rgba(74,42,42,.8)">
+                    Thank you for being part of our love story and celebrating this unforgettable moment with us.
+                </p>
+                <div class="font-display" style="margin-top:2.5rem;font-size:1.875rem;color:var(--primary);position:relative;z-index:3;">— Ed &amp; Louiella —</div>
+            </div>
+        </section>
+    </main>
+    
+    <audio id="bg-music" src="images/Audio.mp3" loop></audio>
+    <button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
+        <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </button>
+
+    <!-- QR Code generator (small inline lib) -->
+    <script>
+        /*! qrcode-generator 1.4.4 (Kazuhiko Arase, MIT) - tiny version */
+        var qrcode = function() {
+            var r = function(r, e) {
+                    var t = new Array(r),
+                        o, a, n;
+                    for (o = 0; o < r; o++) {
+                        t[o] = new Array(r);
+                        for (a = 0; a < r; a++) t[o][a] = null
+                    }
+                    for (o = 0; o < e.length; o += 2) {
+                        var f = e[o],
+                            s = e[o + 1];
+                        for (n = 0; n < f.length; n++) {
+                            var l = f[n];
+                            t[s][l] = true
+                        }
+                    }
+                    return t
+                },
+                e = function(r, e) {
+                    var t, o, a, n, f, s, l, c = 0,
+                        u = 0,
+                        d = new Array(r.length);
+                    for (o = 0; o < r.length; o++) {
+                        d[o] = new Array;
+                        var h = r[o];
+                        for (t = 0; t < h.length; t++) d[o][t] = h[t]
+                    }
+                    for (o = r.length - 1; o >= 0; o -= 2) {
+                        if (o === 6) o--;
+                        for (a = (r.length - 1 - o) * 2 + 1; a >= 0; a--) {
+                            f = -1;
+                            for (n = 0; n < r.length; n++)
+                                for (s = 0; s < r[o][n].length; s += 2)
+                                    if (r[o][n][s] === a)
+                                        if (r[o][n][s + 1] === u) {
+                                            f = n;
+                                            break
+                                        }
+                            if (f !== -1) break;
+                            if (f === -1) continue;
+                            l = f;
+                            f = -1;
+                            for (n = 0; n < r.length; n++)
+                                for (s = 0; s < r[o + 1][n].length; s += 2)
+                                    if (r[o + 1][n][s] === a)
+                                        if (r[o + 1][n][s + 1] === u) {
+                                            f = n;
+                                            break
+                                        }
+                            if (f === -1) continue;
+                            t = d[l][f];
+                            d[l][f] = d[f][l];
+                            d[f][l] = t;
+                            c++
+                        }
+                        u++
+                    }
+                    return c % 2 === 0
+                },
+                t = function(r) {
+                    var t = new Array,
+                        o, a;
+                    for (o = 0; o < r.length; o++) {
+                        t[o] = new Array;
+                        var n = r[o];
+                        for (a = 0; a < n.length; a++) t[o][a] = n[a]
+                    }
+                    return t
+                },
+                o = function(r, e, o, a) {
+                    var n = r[e][o];
+                    r[e][o] = r[e][a];
+                    r[e][a] = n
+                },
+                a = function(r) {
+                    for (var e = 0, o = 0, a = 0; a < r.length; a++) {
+                        var n = r[a];
+                        if (n[1].length > e) e = n[1].length;
+                        o += n[0].length
+                    }
+                    return e * o
+                };
+            return {
+                stringToBytes: function(r) {
+                    var e = new Array,
+                        t;
+                    for (t = 0; t < r.length; t++) {
+                        var o = r.charCodeAt(t);
+                        if (o < 128) e.push(o);
+                        else if (o < 2048) {
+                            e.push(192 | (o >> 6));
+                            e.push(128 | (o & 63))
+                        } else if (o < 55296 || o >= 57344) {
+                            e.push(224 | (o >> 12));
+                            e.push(128 | ((o >> 6) & 63));
+                            e.push(128 | (o & 63))
+                        } else {
+                            t++;
+                            if (t < r.length) {
+                                var a = r.charCodeAt(t);
+                                if (a >= 56320 && a <= 57343) {
+                                    var n = ((o - 55296) * 1024) + (a - 56320) + 65536;
+                                    e.push(240 | (n >> 18));
+                                    e.push(128 | ((n >> 12) & 63));
+                                    e.push(128 | ((n >> 6) & 63));
+                                    e.push(128 | (n & 63))
+                                } else t--
+                            }
+                        }
+                    }
+                }
+                return e
+            }, create: function(o, n, f, s, l) {
+                n = n || 1;
+                s = s || 'M';
+                l = l || 0;
+                var c = 0,
+                    u = {},
+                    d, h, p, m, g;
+                if (o.length <= 0 || o.length > 4096) throw new Error('Too long data');
+                if (typeof o === 'string') o = this.stringToBytes(o);
+                var b = 1,
+                    v = 1,
+                    w = function(r) {
+                        var e = new Array,
+                            t, o, a;
+                        for (o = 0; o < r.length; o++) {
+                            e[o] = new Array;
+                            var n = r[o];
+                            for (t = 0; t < n.length; t++) e[o][t] = n[t]
+                        }
+                        return e
+                    },
+                    x = [],
+                    y = [
+                        [1, 10],
+                        [1, 9],
+                        [1, 12],
+                        [1, 11],
+                        [2, 15],
+                        [2, 16],
+                        [2, 18],
+                        [2, 19],
+                        [2, 14],
+                        [3, 22],
+                        [3, 23],
+                        [3, 25],
+                        [3, 24],
+                        [3, 13],
+                        [4, 30],
+                        [4, 29],
+                        [4, 27],
+                        [4, 28],
+                        [4, 12],
+                        [5, 18],
+                        [5, 17],
+                        [5, 15],
+                        [5, 16],
+                        [5, 11],
+                        [6, 24],
+                        [6, 23],
+                        [6, 21],
+                        [6, 22],
+                        [6, 10],
+                        [7, 30],
+                        [7, 29],
+                        [7, 27],
+                        [7, 28],
+                        [7, 9],
+                        [8, 20],
+                        [8, 19],
+                        [8, 17],
+                        [8, 18],
+                        [8, 8],
+                        [9, 33],
+                        [9, 32],
+                        [9, 30],
+                        [9, 31],
+                        [9, 7],
+                        [10, 24],
+                        [10, 23],
+                        [10, 21],
+                        [10, 22],
+                        [10, 6],
+                        [11, 30],
+                        [11, 29],
+                        [11, 27],
+                        [11, 28],
+                        [11, 5],
+                        [12, 24],
+                        [12, 23],
+                        [12, 21],
+                        [12, 22],
+                        [12, 4],
+                        [13, 30],
+                        [13, 29],
+                        [13, 27],
+                        [13, 28],
+                        [13, 3],
+                        [14, 30],
+                        [14, 29],
+                        [14, 27],
+                        [14, 28],
+                        [14, 2],
+                        [15, 30],
+                        [15, 29],
+                        [15, 27],
+                        [15, 28],
+                        [15, 1],
+                        [16, 30],
+                        [16, 29],
+                        [16, 27],
+                        [16, 28],
+                        [16, 1]
+                    ];
+                for (g = 0; g < y.length; g++)
+                    if (y[g][1] === o.length) break;
+                if (g === y.length) throw new Error('Bad data length');
+                d = y[g][0];
+                h = d * 4 + 17;
+                u.modules = function(o) {
+                    var a = new Array,
+                        n, f;
+                    for (n = 0; n < o; n++) {
+                        a[n] = new Array(o);
+                        for (f = 0; f < o; f++) a[n][f] = null
+                    }
+                    return a
+                }(h);
+                u.positionPattern = [
+                    [0, 0],
+                    [0, h - 7],
+                    [h - 7, 0]
+                ];
+                u.typeNumber = d;
+                u.dataCache = t(o);
+                u.dataList = [];
+                for (g = 0; g < x.length; g++) u.dataList.push(x[g]);
+                var A = u.modules;
+                var B = u.positionPattern;
+                var C = function(r, e) {
+                    for (var t = -1; t <= 7; t++)
+                        if (r + e + t >= 0 && r + e + t < h) {
+                            for (var o = -1; o <= 7; o++)
+                                if (e + t + o >= 0 && e + t + o < h) {
+                                    var a = true;
+                                    if (t >= 0 && o >= 0 && t < 6 && o < 6) a = false;
+                                    else if (t >= 0 && o <= 6 && t < 6 && o >= 6 - 1) a = false;
+                                    else if (t <= 6 && o >= 0 && t >= 6 - 1 && o < 6) a = false;
+                                    else if (t <= 6 && o <= 6 && t >= 6 - 1 && o >= 6 - 1) a = false;
+                                    if (a) A[r + e + t][e + t + o] = r < 0 || r + e + t < 0 || e + t + o < 0 || r + e + t >= h || e + t + o >= h ? false : true
+                                }
+                        }
+                };
+                for (g = 0; g < B.length; g++) C(B[g][0], B[g][1]);
+                var D = function() {
+                    for (var r = 0; r < h - 8; r++) {
+                        if (A[r][6] !== true) A[r][6] = (r % 2 === 0)
+                    }
+                    for (var e = 0; e < h - 8; e++) {
+                        if (A[6][e] !== true) A[6][e] = (e % 2 === 0)
+                    }
+                };
+                D();
+                u.size = h;
+                return u
+            }
+        }
+        }();
+    </script>
+
+    <script>
+        // ============ INTRO ENVELOPE ============
+        // Safe localStorage wrapper for local file:/// compatibility
+        const safeStorage = {
+            getItem(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (e) {
+                    return window[key] || null;
+                }
+            },
+            setItem(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (e) {
+                    window[key] = value;
+                }
+            }
+        };
+
+        const intro = document.getElementById('intro');
+        const main = document.getElementById('main');
+        const envelope = document.getElementById('envelope');
+        const tapHint = document.getElementById('tap-hint');
+        const pwdForm = document.getElementById('pwd-form');
+        const pwdInput = document.getElementById('pwd-input');
+        const pwdErr = document.getElementById('pwd-err');
+
+        envelope.addEventListener('click', () => {
+            if (envelope.classList.contains('open')) return;
+            envelope.classList.add('open');
+            tapHint.style.display = 'none';
+            setTimeout(() => {
+                pwdForm.style.display = 'block';
+                setTimeout(() => pwdInput.focus(), 100);
+            }, 1400);
+        });
+
+        pwdForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (pwdInput.value.trim() === '080126') {
+                pwdErr.style.display = 'none';
+                safeStorage.setItem('invitationUnlocked', 'true');
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                    main.style.display = 'block';
+                    document.body.style.overflow = 'auto';
+                    window.scrollTo(0, 0);
+                    startCountdown();
+                    initScratch();
+                    renderGuests();
+                    renderEntourage();
+                    makePetals('petals-main', 30);
+                }, 400);
+            } else {
+                pwdErr.style.display = 'block';
+                pwdInput.value = '';
+                pwdInput.focus();
+            }
+        });
+
+        // ============ PETALS ============
+        function makePetals(containerId, count) {
+            const c = document.getElementById(containerId);
+            if (!c || c.dataset.made) return;
+            c.dataset.made = '1';
+            const hues = ['#fce8e0,#e0a89c', '#f8e0d8,#d99c8a', '#f4d4dc,#d8a0b0', '#fae3c8,#e0b888', '#e8e8c0,#c8c890'];
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('span');
+                p.className = 'petal';
+                p.style.left = (Math.random() * 100) + '%';
+                p.style.animationDelay = (-Math.random() * 12) + 's';
+                p.style.animationDuration = (10 + Math.random() * 14) + 's';
+                const size = 10 + Math.random() * 18;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.setProperty('--x', ((Math.random() - 0.5) * 240) + 'px');
+                p.style.background = 'radial-gradient(ellipse at 30% 30%,' + hues[i % 5] + ')';
+                c.appendChild(p);
+            }
+        }
+
+        // ============ COUNTDOWN ============
+        function startCountdown() {
+            const target = new Date('2026-08-01T14:00:00+08:00').getTime();
+            const el = document.getElementById('countdown');
+            const labels = ['Days', 'Hours', 'Minutes', 'Seconds'];
+
+            function tick() {
+                const diff = Math.max(0, target - Date.now());
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff / 3600000) % 24);
+                const m = Math.floor((diff / 60000) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+                const vals = [d, h, m, s];
+                if (!el.children.length) {
+                    labels.forEach((lab, i) => {
+                        const cell = document.createElement('div');
+                        cell.className = 'paper rounded-xl center';
+                        cell.style.cssText = 'padding:1rem .5rem;text-align:center';
+                        cell.innerHTML = '<div class="font-display" style="font-size:3rem;color:var(--primary)">--</div><div class="text-uppercase" style="font-size:.625rem;letter-spacing:.25em;color:#8a6a60;margin-top:.25rem">' + lab + '</div>';
+                        el.appendChild(cell);
+                    });
+                }
+                Array.from(el.children).forEach((cell, i) => {
+                    cell.firstElementChild.textContent = String(vals[i]).padStart(2, '0');
+                });
+            }
+            tick();
+            setInterval(tick, 1000);
+        }
+
+        // ============ SCRATCH CARD ============
+        function initScratch() {
+            const canvas = document.getElementById('scratch');
+            const wrap = document.getElementById('scratch-wrap');
+            const W = 320,
+                H = 150;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            const grad = ctx.createLinearGradient(0, 0, W, H);
+            grad.addColorStop(0, '#d9b8a8');
+            grad.addColorStop(0.5, '#c79b88');
+            grad.addColorStop(1, '#a87a68');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            ctx.font = '500 18px Quicksand, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('✦  Scratch to reveal  ✦', W / 2, H / 2 + 6);
+
+            let drawing = false,
+                revealed = false;
+
+            function pos(e) {
+                const r = canvas.getBoundingClientRect();
+                return {
+                    x: (e.clientX - r.left) * (W / r.width),
+                    y: (e.clientY - r.top) * (H / r.height)
+                };
+            }
+
+            function start(e) {
+                drawing = true;
+                canvas.setPointerCapture(e.pointerId);
+                scratch(e);
+            }
+
+            function end() {
+                drawing = false;
+                checkReveal();
+            }
+
+            function scratch(e) {
+                if (!drawing || revealed) return;
+                const {
+                    x,
+                    y
+                } = pos(e);
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 28, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function checkReveal() {
+                const img = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let cleared = 0;
+                for (let i = 3; i < img.length; i += 64)
+                    if (img[i] === 0) cleared++;
+                if (cleared / (img.length / 64) > 0.5 && !revealed) {
+                    revealed = true;
+                    canvas.style.transition = 'opacity .6s ease';
+                    canvas.style.opacity = '0';
+                }
+            }
+            canvas.addEventListener('pointerdown', start);
+            canvas.addEventListener('pointermove', scratch);
+            canvas.addEventListener('pointerup', end);
+            canvas.addEventListener('pointerleave', end);
+        }
+
+        // ============ GUESTS ============
+        const guests = [{
+            name: 'TERRENCE JAY C. ABELLANO',
+            pax: 0,
+            table: 'JEZREEL AILEEN P. SITOY'
+        }, {
+            name: 'Maria Santos',
+            pax: 1,
+            table: 'Table 02'
+        }, {
+            name: 'John & Anne Cruz',
+            pax: 3,
+            table: 'Table 07'
+        }, {
+            name: 'Daniel Reyes',
+            pax: 1,
+            table: 'Table 04'
+        }, ];
+
+        function renderGuests() {
+            const c = document.getElementById('guest-list');
+            if (!c) return;
+            guests.forEach(g => {
+                const row = document.createElement('div');
+                row.style.cssText = 'display:grid;grid-template-columns:7fr 2fr 3fr;padding:1rem 1.5rem;border-top:1px solid rgba(180,140,120,.4);align-items:center';
+                row.innerHTML = '<div class="font-display" style="font-size:1.125rem">' + g.name + '</div>' +
+                    '<div class="font-mail center" style="font-size:1.5rem;color:var(--primary)">' + g.pax + '</div>' +
+                    '<div class="font-sans" style="text-align:right;font-size:.875rem;color:#8a6a60">' + g.table + '</div>';
+                c.appendChild(row);
+            });
+        }
+
+        // ============ ENTROURAGE ============
+        const principals = [{
+            role: 'Preacher',
+            names: ['Biliaber']
+        }, {
+            role: 'Maid of Honor',
+            names: ['Stephance M. Cahayagan']
+        }, {
+            role: 'Best Man',
+            names: ['Josuah H. Bagongon']
+        }, {
+            role: 'Bible Bearer',
+            names: ['Lucas F. Cahayagan']
+        }, {
+            role: 'Ring Bearer',
+            names: ['Zane David G. Posadas']
+        }, {
+            role: 'Coin Bearer',
+            names: ['Jared H. Neri']
+        }, {
+            role: 'Veil Sponsors',
+            names: ['Mr. & Mrs. Bacan']
+        }, {
+            role: 'Cord Sponsors',
+            names: ['Mr. & Mrs. Buranday']
+        }, ];
+        const bridesmaids = ['Meljoy H. Madulin', 'Mariell C. Mata', 'Jovelyn A. Mondano', 'Sobee Myles P. Bacan', 'Ava Georgina P. Bacan', 'Iza Marthena P. Bacan', 'Crizelle Dahilog', 'Marevil Casinillo'];
+        const groomsmen = ['Justin A. Ranes', 'Vunch Galinada', 'Erickson Klein Quijano', 'Jan Christian H. Neri', 'Christian Daniel B. Anzano', 'Jedd Noel C. Edio', 'Allen Carl C. Baco', 'Hubert H. Madulin'];
+        const flowerGirls = ['Princess Tishia B. Anzano', 'Amaris Beatrix B. Lagat', 'Bea Caralde', 'Shan Canayagan', 'Amirah Abilene P. Bacan', 'Anak ni Mak² Posadas'];
+
+        function card(title, names) {
+            const wrap = document.createElement('div');
+            wrap.className = 'paper rounded-2xl';
+            wrap.style.cssText = 'padding:1.5rem;text-align:center';
+            wrap.innerHTML = '<div class="text-uppercase tracking-widest" style="font-size:.625rem;color:#8a6a60">' + title + '</div>' +
+                '<div style="margin-top:1rem">' + names.map(n => '<div class="font-display" style="font-size:1.125rem;color:rgba(74,42,42,.85);padding-bottom:.5rem;margin-bottom:.5rem;border-bottom:1px dashed rgba(180,140,120,.4)">' + n + '</div>').join('') + '</div>';
+            return wrap;
+        }
+
+        function renderEntourage() {
+            const c = document.getElementById('entourage-cards');
+            if (!c) return;
+            const grid1 = document.createElement('div');
+            grid1.style.cssText = 'display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))';
+            principals.forEach(p => grid1.appendChild(card(p.role, p.names)));
+            c.appendChild(grid1);
+            const grid2 = document.createElement('div');
+            grid2.style.cssText = 'display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:2.5rem';
+            grid2.appendChild(card('Bridesmaids', bridesmaids));
+            grid2.appendChild(card('Groomsmen', groomsmen));
+            c.appendChild(grid2);
+            const grid3 = document.createElement('div');
+            grid3.style.cssText = 'margin-top:2.5rem';
+            grid3.appendChild(card('Flower Girls', flowerGirls));
+            c.appendChild(grid3);
+        }
+
+        // ============ QR CODE (simple) ============
+        function makeQR() {
+            const target = document.getElementById('qr');
+            target.innerHTML = '';
+            const svgNS = 'http://www.w3.org/2000/svg';
+            const url = 'https://forms.gle/example-rsvp';
+            // Build a pseudo-QR pattern from the URL hash so it looks real
+            const svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('width', '200');
+            svg.setAttribute('height', '200');
+            svg.setAttribute('viewBox', '0 0 25 25');
+            svg.style.background = '#faf5ee';
+            let h = 0;
+            for (let i = 0; i < url.length; i++) h = ((h << 5) - h + url.charCodeAt(i)) | 0;
+
+            function rng(s) {
+                let x = Math.sin(s) * 1e4;
+                return x - Math.floor(x);
+            }
+            const seed = Math.abs(h);
+            const grid = [];
+            for (let y = 0; y < 25; y++) {
+                grid[y] = [];
+                for (let x = 0; x < 25; x++) grid[y][x] = rng(seed + x * 31 + y * 97) > 0.5 ? 1 : 0;
+            }
+            // finder squares
+            function finder(ox, oy) {
+                for (let y = 0; y < 7; y++)
+                    for (let x = 0; x < 7; x++) {
+                        const on = (x === 0 || y === 0 || x === 6 || y === 6) || (x >= 2 && y >= 2 && x <= 4 && y <= 4);
+                        grid[oy + y][ox + x] = on ? 1 : 0;
+                    }
+            }
+            finder(0, 0);
+            finder(18, 0);
+            finder(0, 18);
+            for (let y = 0; y < 25; y++) {
+                for (let x = 0; x < 25; x++) {
+                    if (grid[y][x]) {
+                        const r = document.createElementNS(svgNS, 'rect');
+                        r.setAttribute('x', x);
+                        r.setAttribute('y', y);
+                        r.setAttribute('width', 1);
+                        r.setAttribute('height', 1);
+                        r.setAttribute('fill', '#5a2a2a');
+                        svg.appendChild(r);
+                    }
+                }
+            }
+            target.appendChild(svg);
+        }
+
+        // ============ INIT: check if unlocked ============
+        if (safeStorage.getItem('invitationUnlocked') === 'true') {
+            intro.style.display = 'none';
+            main.style.display = 'block';
+            document.body.style.overflow = 'auto';
+            startCountdown();
+            initScratch();
+            renderGuests();
+            renderEntourage();
+            makePetals('petals-main', 30);
+        } else {
+            document.body.style.overflow = 'hidden';
+            makePetals('petals-intro', 28);
+        }
+
+        // ============ INTERACTIVE MOUSE TRAIL & CLICK BURST ============
+        function spawnTrail(e) {
+            if (Math.random() > 0.15) return;
+            const container = document.getElementById('petals-main');
+            if (!container || localStorage.getItem('invitationUnlocked') !== 'true') return;
+            
+            const petal = document.createElement('span');
+            petal.className = 'petal-trail';
+            
+            const isLeaf = Math.random() > 0.7;
+            const size = 8 + Math.random() * 12;
+            
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.left = e.clientX + 'px';
+            petal.style.top = e.clientY + 'px';
+            
+            const driftX = (Math.random() - 0.5) * 60;
+            const driftY = 20 + Math.random() * 40;
+            const rot = Math.random() * 360;
+            const rotDest = rot + (Math.random() - 0.5) * 180;
+            
+            petal.style.setProperty('--drift-x', driftX + 'px');
+            petal.style.setProperty('--drift-y', driftY + 'px');
+            petal.style.setProperty('--rot-start', rot + 'deg');
+            petal.style.setProperty('--rot-end', rotDest + 'deg');
+            
+            if (isLeaf) {
+                petal.style.background = 'radial-gradient(ellipse at 30% 30%, #e6eed8, #a8c3a7)';
+                petal.style.borderRadius = '100% 0 100% 0';
+            } else {
+                const hues = ['#fce8e0,#e0a89c', '#f8e0d8,#d99c8a', '#f4d4dc,#d8a0b0', '#fae3c8,#e0b888'];
+                const picked = hues[Math.floor(Math.random() * hues.length)];
+                petal.style.background = 'radial-gradient(ellipse at 30% 30%,' + picked + ')';
+                petal.style.borderRadius = '80% 0 80% 0';
+            }
+            
+            container.appendChild(petal);
+            setTimeout(() => petal.remove(), 1000);
+        }
+
+        function spawnBurst(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'INPUT' || e.target.closest('#pwd-form')) return;
+            const container = document.getElementById('petals-main');
+            if (!container || localStorage.getItem('invitationUnlocked') !== 'true') return;
+            
+            const count = 10;
+            for (let i = 0; i < count; i++) {
+                const petal = document.createElement('span');
+                petal.className = 'petal-burst';
+                
+                const size = 10 + Math.random() * 14;
+                petal.style.width = size + 'px';
+                petal.style.height = size + 'px';
+                petal.style.left = e.clientX + 'px';
+                petal.style.top = e.clientY + 'px';
+                
+                const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+                const distance = 40 + Math.random() * 80;
+                const destX = Math.cos(angle) * distance;
+                const destY = Math.sin(angle) * distance + 30;
+                
+                const rot = Math.random() * 360;
+                const rotDest = rot + (Math.random() - 0.5) * 270;
+                
+                petal.style.setProperty('--dest-x', destX + 'px');
+                petal.style.setProperty('--dest-y', destY + 'px');
+                petal.style.setProperty('--rot-start', rot + 'deg');
+                petal.style.setProperty('--rot-end', rotDest + 'deg');
+                
+                const isLeaf = Math.random() > 0.6;
+                if (isLeaf) {
+                    petal.style.background = 'radial-gradient(ellipse at 30% 30%, #e6eed8, #a8c3a7)';
+                    petal.style.borderRadius = '100% 0 100% 0';
+                } else {
+                    const hues = ['#fce8e0,#e0a89c', '#f8e0d8,#d99c8a', '#f4d4dc,#d8a0b0', '#fae3c8,#e0b888'];
+                    const picked = hues[Math.floor(Math.random() * hues.length)];
+                    petal.style.background = 'radial-gradient(ellipse at 30% 30%,' + picked + ')';
+                    petal.style.borderRadius = '80% 0 80% 0';
+                }
+                
+                container.appendChild(petal);
+                setTimeout(() => petal.remove(), 800);
+            }
+        }
+
+        window.addEventListener('mousemove', spawnTrail);
+        window.addEventListener('click', spawnBurst);
+
+        // ============ MUSIC CONTROLS ============
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const envelopeBtn = document.getElementById('envelope');
+        const pwdSubmitForm = document.getElementById('pwd-form');
+
+        // Restore mute/play state from safeStorage
+        if (safeStorage.getItem('musicPaused') === 'true') {
+            musicToggle.classList.remove('playing');
+            musicToggle.classList.add('muted');
+        } else {
+            musicToggle.classList.remove('muted');
+        }
+
+        function playMusic() {
+            if (!bgMusic) return;
+            bgMusic.play().then(() => {
+                musicToggle.classList.add('playing');
+                musicToggle.classList.remove('muted');
+                safeStorage.setItem('musicPaused', 'false');
+            }).catch(err => {
+                console.log("Playback blocked by browser.");
+            });
+        }
+
+        function pauseMusic() {
+            if (!bgMusic) return;
+            bgMusic.pause();
+            musicToggle.classList.remove('playing');
+            musicToggle.classList.add('muted');
+            safeStorage.setItem('musicPaused', 'true');
+        }
+
+        if (musicToggle && bgMusic) {
+            musicToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (bgMusic.paused) {
+                    playMusic();
+                } else {
+                    pauseMusic();
+                }
+            });
+
+            if (envelopeBtn) envelopeBtn.addEventListener('click', playMusic);
+            if (pwdSubmitForm) pwdSubmitForm.addEventListener('submit', playMusic);
+
+            document.addEventListener('click', function autoPlayOnClick() {
+                if (bgMusic.paused && safeStorage.getItem('musicPaused') !== 'true') {
+                    playMusic();
+                }
+                document.removeEventListener('click', autoPlayOnClick);
+            }, { capture: true, once: true });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Wedding Entourage — Ed & Louiella</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #fbf3ec;
+  --fg: #4a2a2a;
+  --primary: #aa9449;
+  --cream: #faf5ee;
+  --rose: #c98a82;
+  --gold: #c69a4d;
+  --green: #8ea88d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--fg);
+  background-color: #faf5ee;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(253, 246, 237, 0.7) 0%, rgba(246, 236, 224, 0.4) 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><filter id='paper'><feTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3' result='noise'/><feColorMatrix type='matrix' values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100' height='100' filter='url(%23paper)' fill='none'/></svg>");
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+section { padding: 90px 20px; position: relative; }
+.maxw { max-width: 1200px; margin: auto; }
+.center { text-align: center; }
+.font-script { font-family: 'Pinyon Script', cursive; }
+.font-mail { font-family: 'Caveat', cursive; }
+
+.tracking {
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  color: #8a6a60;
+}
+
+.title {
+  font-size: clamp(48px, 10vw, 78px);
+  line-height: 1;
+  margin-top: 10px;
+  color: #6e4a3a;
+}
+
+.subtitle {
+  font-size: clamp(20px, 4vw, 28px);
+  margin-top: 12px;
+  color: rgba(74, 42, 42, .70);
+}
+
+.section-label { margin-top: 80px; text-align: center; }
+.section-label h2 {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(40px, 8vw, 60px);
+  color: #6e4a3a;
+}
+.section-label p {
+  margin-top: 10px;
+  color: #8a6a60;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, .75);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  padding: 35px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .08);
+  border: 1px solid rgba(255, 255, 255, .5);
+  transition: .35s;
+}
+
+/* ============ GARDEN FRAME & BORDER ============ */
+.garden-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gflower {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.88;
+  filter: drop-shadow(0 15px 30px rgba(120,60,60,0.12));
+  transition: transform 0.8s ease;
+}
+
+.tl-flower {
+  top: -6%;
+  left: -6%;
+  width: 28vw;
+  max-width: 320px;
+  transform: rotate(-5deg);
+}
+.tr-flower {
+  top: -6%;
+  right: -6%;
+  width: 30vw;
+  max-width: 340px;
+  transform: rotate(12deg);
+}
+.bl-flower {
+  bottom: -8%;
+  left: -8%;
+  width: 35vw;
+  max-width: 380px;
+  transform: rotate(8deg);
+}
+.br-flower {
+  bottom: -8%;
+  right: -8%;
+  width: 38vw;
+  max-width: 410px;
+  transform: rotate(-12deg);
+}
+
+.mid-left-flower {
+  top: 45%;
+  left: -10%;
+  width: 22vw;
+  max-width: 260px;
+  transform: translateY(-50%) rotate(40deg);
+  opacity: 0.7;
+}
+.mid-right-flower {
+  top: 55%;
+  right: -10%;
+  width: 24vw;
+  max-width: 280px;
+  transform: translateY(-50%) rotate(-30deg);
+  opacity: 0.7;
+}
+
+.gold-border {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(198, 154, 77, 0.45);
+  pointer-events: none;
+  z-index: 999;
+}
+.gold-border::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(198, 154, 77, 0.25);
+}
+
+@media (max-width: 768px) {
+  .tl-flower { width: 45vw; top: -3%; left: -8%; }
+  .tr-flower { width: 50vw; top: -4%; right: -8%; }
+  .bl-flower { width: 52vw; bottom: -5%; left: -9%; }
+  .br-flower { width: 55vw; bottom: -5%; right: -9%; }
+  .mid-left-flower, .mid-right-flower { display: none; }
+  .gold-border { top: 8px; left: 8px; right: 8px; bottom: 8px; }
+}
+
+/* Minimal Vine Borders for Garden Theme */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.65;
+  transition: transform 0.6s ease;
+}
+.card::before {
+  top: 12px;
+  left: 12px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238ea88d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22C2 12 10 4 20 4"/><path d="M9 11c0-2 2-4 4-4"/><path d="M5 16c0-1.5 1-3 2.5-3.5"/></svg>');
+}
+.card::after {
+  bottom: 12px;
+  right: 12px;
+  transform: rotate(180deg);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238ea88d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22C2 12 10 4 20 4"/><path d="M9 11c0-2 2-4 4-4"/><path d="M5 16c0-1.5 1-3 2.5-3.5"/></svg>');
+}
+.card:hover::before {
+  transform: scale(1.1) translate(1px, 1px);
+}
+.card:hover::after {
+  transform: rotate(180deg) scale(1.1) translate(1px, 1px);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, .12);
+}
+
+.card h3 {
+  font-size: 14px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: #9c7d69;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.card ul { list-style: none; }
+
+.card li {
+  padding: 10px 0;
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 1px dashed rgba(170, 148, 73, .25);
+}
+
+.card li:last-child { border: none; }
+
+.sponsors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.flower-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 40px;
+  margin-top: 10px;
+}
+
+.flower-grid li { font-size: 20px; }
+
+.btn {
+  display: inline-block;
+  margin-top: 70px;
+  padding: 16px 40px;
+  border-radius: 999px;
+  background: #aa9449;
+  color: white;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  transition: .3s;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .3);
+}
+
+.btn:hover { background: #967f3d; transform: translateY(-3px); }
+
+.flower-deco {
+  position: fixed;
+  width: 11rem;
+  opacity: .85;
+  pointer-events: none;
+  z-index: 1;
+}
+.flower-deco.tl { top: 0; left: 0; }
+.flower-deco.br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+
+
+@keyframes petal-fall {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: .8; }
+  90% { opacity: .7; }
+  100% { transform: translateY(110vh) translateX(var(--x, 80px)) rotate(720deg); opacity: 0; }
+}
+
+.petal {
+  position: absolute;
+  top: -5vh;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(ellipse at 30% 30%, #fce8e0, #e0a89c);
+  border-radius: 80% 0 80% 0;
+  animation: petal-fall linear infinite;
+  pointer-events: none;
+  opacity: .8;
+  filter: blur(.3px);
+}
+
+/* ============ INTERACTIVE GARDEN EFFECTS ============ */
+.flower-deco {
+  transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+}
+.flower-deco:hover {
+  transform: scale(1.06) rotate(4deg) !important;
+  opacity: 1 !important;
+}
+.flower-deco.br:hover {
+  transform: scale(1.06) rotate(184deg) !important;
+}
+
+.petal-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%) rotate(var(--rot-start));
+  animation: trail-fade 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  opacity: 0.9;
+}
+
+@keyframes trail-fade {
+  to {
+    transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) rotate(var(--rot-end)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.petal-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%) rotate(var(--rot-start));
+  animation: burst-fade 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  opacity: 0.95;
+}
+
+@keyframes burst-fade {
+  to {
+    transform: translate(calc(-50% + var(--dest-x)), calc(-50% + var(--dest-y))) rotate(var(--rot-end)) scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-6px); }
+}
+.sway { animation: sway 6s ease-in-out infinite; transform-origin: bottom center; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #6e4a3a, #ffe69d, #6e4a3a, #ffe69d, #6e4a3a);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 10s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .sponsors, .flower-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 16px; }
+}
+
+/* ============ MUSIC TOGGLE ============ */
+.music-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(198, 154, 77, 0.45);
+  box-shadow: 0 10px 25px rgba(120, 60, 60, 0.18);
+  color: var(--primary);
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
+}
+.music-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(120, 60, 60, 0.28);
+}
+.music-icon {
+  width: 22px;
+  height: 22px;
+}
+.music-btn.playing .music-icon {
+  animation: spin 6s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.music-btn.muted::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 24px;
+  background: #c44a3a;
+  transform: rotate(45deg);
+  border-radius: 99px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="garden-frame">
+  <img src="images/f2.png" class="gflower tr-flower" alt="">
+  <img src="images/f3.png" class="gflower bl-flower" alt="">
+  <img src="images/f4.png" class="gflower br-flower" alt="">
+  <img src="images/f5.png" class="gflower tl-flower" alt="">
+  <img src="images/f1.png" class="gflower mid-left-flower" alt="">
+  <img src="images/f1.png" class="gflower mid-right-flower" alt="">
+</div>
+<div class="gold-border"></div>
+
+<div id="petals-main" style="position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:9999;"></div>
+
+<svg class="flower-deco tl" viewBox="0 0 200 200" aria-hidden="true">
+  <g class="sway">
+    <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+    <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+    <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+    <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+    <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+    <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+    <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+    <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+    <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+  </g>
+</svg>
+
+<svg class="flower-deco br" viewBox="0 0 200 200" aria-hidden="true">
+  <g class="sway">
+    <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
+    <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
+    <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
+    <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
+    <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
+    <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
+    <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
+    <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
+    <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
+  </g>
+</svg>
+
+<section style="
+    background-image: url('images/3.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px 80px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid rgba(180, 140, 120, 0.2);
+">
+  <!-- Semi-transparent overlay to ensure text readability -->
+  <div style="position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); z-index: 1;"></div>
+  
+  <div class="maxw" style="position: relative; z-index: 2;">
+    <div class="center">
+      <div class="tracking">With us at the altar</div>
+      <h1 class="font-script title shimmer">Our Entourage</h1>
+      <p class="font-mail subtitle">the people who shaped our story</p>
+      <p class="tracking" style="margin-top:20px;letter-spacing:.2em;">Ed &amp; Louiella · August 1, 2026</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="maxw">
+    <!-- PRINCIPAL SPONSORS (PRIORITY) -->
+    <div class="section-label" style="margin-top:0;">
+      <h2 class="font-script">Principal Sponsors</h2>
+      <p>Witnesses of our forever</p>
+    </div>
+
+    <div class="sponsors">
+      <div class="card">
+        <h3>Gentlemen</h3>
+        <ul>
+          <li>Terrence Jay C. Abellano</li>
+          <li>Jason Salvo</li>
+          <li>Michael D. Quiacao</li>
+          <li>Reynante L. Salvaleon</li>
+          <li>Edgardo C. Pores</li>
+          <li>Floro S. Ampo</li>
+          <li>Oliver G. Janubas</li>
+          <li>Pio Garcia</li>
+          <li>Mark Anthony Conde</li>
+          <li>Alexis Rainier Cimacio</li>
+          <li>Kevin S. Montañer</li>
+          <li>Deng Quanbao</li>
+          <li>William Flores</li>
+          <li>Nelson Padilla</li>
+          <li>Boylan Pao</li>
+          <li>Vincent Michael Salon</li>
+          <li>Noel B. Edio</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Ladies</h3>
+        <ul>
+          <li>Jezreel Aileen P. Sitoy</li>
+          <li>Jocel L. Salvo</li>
+          <li>Elena G. Quiacao</li>
+          <li>Jeanette P. Salvaleon</li>
+          <li>Lyndie Marie V. Pores</li>
+          <li>Melwida B. Ampo</li>
+          <li>Marynissa B. Janubas</li>
+          <li>Adelaida Garcia</li>
+          <li>Glenn Beth Conde</li>
+          <li>Sarla Hebaya</li>
+          <li>Lucille Unabia</li>
+          <li>Charis V. Coronado</li>
+          <li>Exuperia C. Fabela</li>
+          <li>Evangeline D. Padilla</li>
+          <li>Rhosjarie S. Pao</li>
+          <li>Rita Salon</li>
+          <li>Logie P. Nagasan</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAID OF HONOR & BEST MAN -->
+    <div class="section-label">
+      <h2 class="font-script">Honorary Attendants</h2>
+      <p>Our dearest friends</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Maid of Honor</h3>
+        <ul><li>Stephanee M. Cahayagan</li></ul>
+      </div>
+      <div class="card">
+        <h3>Best Man</h3>
+        <ul><li>Josuah H. Bagongon</li></ul>
+      </div>
+    </div>
+
+    <!-- BRIDESMAIDS & GROOMSMEN -->
+    <div class="section-label">
+      <h2 class="font-script">The Wedding Party</h2>
+      <p>Standing beside us</p>
+    </div>
+
+    <div class="sponsors">
+      <div class="card">
+        <h3>Bridesmaids</h3>
+        <ul>
+          <li>Meljoy H. Madulin</li>
+          <li>Mariell C. Mata</li>
+          <li>Jovelyn A. Mondano</li>
+          <li>Sobee Myle P. Bacan</li>
+          <li>Ava Georgina P. Bacan</li>
+          <li>Iza Marthena P. Bacan</li>
+          <li>Crizelle D. Dahilog</li>
+          <li>Marevil Casinillo</li>
+          <li>Erreca P. Cahayagan</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Groomsmen</h3>
+        <ul>
+          <li>Justin A. Ranes</li>
+          <li>Vunch Galinada</li>
+          <li>Erickson Klein Quijano</li>
+          <li>Jan Christian H. Neri</li>
+          <li>Christian Daniel B. Anzano</li>
+          <li>Jedd Noel C. Edio</li>
+          <li>Allen Carl C. Baco</li>
+          <li>Hubert Madulin</li>
+          <li>Dave Laurenz G. Posadas</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BEARERS -->
+    <div class="section-label">
+      <h2 class="font-script">Secondary Sponsors</h2>
+      <p>Bearers of our sacred symbols</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Bible Bearer</h3>
+        <ul><li>Lucas F. Cahayagan</li></ul>
+      </div>
+      <div class="card">
+        <h3>Ring Bearer</h3>
+        <ul><li>Zane David G. Posadas</li></ul>
+      </div>
+      <div class="card">
+        <h3>Coin Bearer</h3>
+        <ul><li>Jared H. Neri</li></ul>
+      </div>
+      <div class="card">
+        <h3>Candle Bearer</h3>
+        <ul><li>Mr. &amp; Mrs. Buranday</li></ul>
+      </div>
+      <div class="card">
+        <h3>Veil Bearer</h3>
+        <ul><li>Mr. &amp; Mrs. Bacan</li></ul>
+      </div>
+      <div class="card">
+        <h3>Cord Bearer</h3>
+        <ul><li>Mr. &amp; Mrs. Mata</li></ul>
+      </div>
+    </div>
+
+    <!-- FLOWER GIRLS -->
+    <div class="section-label">
+      <h2 class="font-script">Flower Girls</h2>
+      <p>Spreading petals of joy</p>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="grid-column:1/-1;">
+        <ul class="flower-grid">
+          <li>Princess Tishia B. Anzano</li>
+          <li>Josette Bea D. Caralde</li>
+          <li>Amaris Beatrix B. Lagat</li>
+          <li>Lourds Shan Cahayagan</li>
+          <li>Mackielle Yzabelle P. Posadas</li>
+          <li>Sophia Gold A. Cahayagan</li>
+          <li>Amirah Abilene P. Bacan</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- USHERS -->
+    <div class="section-label">
+      <h2 class="font-script">Ushers &amp; Usherettes</h2>
+      <p>Guiding our guests with grace</p>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="grid-column:1/-1;">
+        <ul>
+          <li>Niña Faith B. Anzano</li>
+          <li>Mayette F. Cahayagan</li>
+          <li>Cherie May C. Soriano</li>
+          <li>Jennifer Cahayagan</li>
+          <li>Acyl Bethanee C. Fernandez</li>
+          <li>Glendel B. Neri</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="center">
+      <a href="index.html" class="btn">✦ Back to Invitation ✦</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Safe localStorage wrapper for local file:/// compatibility
+const safeStorage = {
+  getItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return window[key] || null;
+    }
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      window[key] = value;
+    }
+  }
+};
+
+function makePetals(containerId, count) {
+  const c = document.getElementById(containerId);
+  if (!c || c.dataset.made) return;
+  c.dataset.made = '1';
+  const hues = ['#fce8e0,#e0a89c','#f8e0d8,#d99c8a','#f4d4dc,#d8a0b0','#fae3c8,#e0b888','#e8e8c0,#c8c890'];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.animationDelay = (-Math.random() * 12) + 's';
+    p.style.animationDuration = (10 + Math.random() * 14) + 's';
+    const size = 10 + Math.random() * 18;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.setProperty('--x', ((Math.random() - 0.5) * 240) + 'px');
+    p.style.background = 'radial-gradient(ellipse at 30% 30%,' + hues[i % 5] + ')';
+    c.appendChild(p);
+  }
+}
+makePetals('petals-main', 30);
+
+// ============ INTERACTIVE MOUSE TRAIL & CLICK BURST ============
+function spawnTrail(e) {
+  if (Math.random() > 0.15) return;
+  const container = document.getElementById('petals-main');
+  if (!container) return;
+  
+  const petal = document.createElement('span');
+  petal.className = 'petal-trail';
+  
+  const isLeaf = Math.random() > 0.7;
+  const size = 8 + Math.random() * 12;
+  
+  petal.style.width = size + 'px';
+  petal.style.height = size + 'px';
+  petal.style.left = e.clientX + 'px';
+  petal.style.top = e.clientY + 'px';
+  
+  const driftX = (Math.random() - 0.5) * 60;
+  const driftY = 20 + Math.random() * 40;
+  const rot = Math.random() * 360;
+  const rotDest = rot + (Math.random() - 0.5) * 180;
+  
+  petal.style.setProperty('--drift-x', driftX + 'px');
+  petal.style.setProperty('--drift-y', driftY + 'px');
+  petal.style.setProperty('--rot-start', rot + 'deg');
+  petal.style.setProperty('--rot-end', rotDest + 'deg');
+  
+  if (isLeaf) {
+    petal.style.background = 'radial-gradient(ellipse at 30% 30%, #e6eed8, #a8c3a7)';
+    petal.style.borderRadius = '100% 0 100% 0';
+  } else {
+    const hues = ['#fce8e0,#e0a89c', '#f8e0d8,#d99c8a', '#f4d4dc,#d8a0b0', '#fae3c8,#e0b888'];
+    const picked = hues[Math.floor(Math.random() * hues.length)];
+    petal.style.background = 'radial-gradient(ellipse at 30% 30%,' + picked + ')';
+    petal.style.borderRadius = '80% 0 80% 0';
+  }
+  
+  container.appendChild(petal);
+  setTimeout(() => petal.remove(), 1000);
+}
+
+function spawnBurst(e) {
+  if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('.btn')) return;
+  const container = document.getElementById('petals-main');
+  if (!container) return;
+  
+  const count = 10;
+  for (let i = 0; i < count; i++) {
+    const petal = document.createElement('span');
+    petal.className = 'petal-burst';
+    
+    const size = 10 + Math.random() * 14;
+    petal.style.width = size + 'px';
+    petal.style.height = size + 'px';
+    petal.style.left = e.clientX + 'px';
+    petal.style.top = e.clientY + 'px';
+    
+    const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+    const distance = 40 + Math.random() * 80;
+    const destX = Math.cos(angle) * distance;
+    const destY = Math.sin(angle) * distance + 30;
+    
+    const rot = Math.random() * 360;
+    const rotDest = rot + (Math.random() - 0.5) * 270;
+    
+    petal.style.setProperty('--dest-x', destX + 'px');
+    petal.style.setProperty('--dest-y', destY + 'px');
+    petal.style.setProperty('--rot-start', rot + 'deg');
+    petal.style.setProperty('--rot-end', rotDest + 'deg');
+    
+    const isLeaf = Math.random() > 0.6;
+    if (isLeaf) {
+      petal.style.background = 'radial-gradient(ellipse at 30% 30%, #e6eed8, #a8c3a7)';
+      petal.style.borderRadius = '100% 0 100% 0';
+    } else {
+      const hues = ['#fce8e0,#e0a89c', '#f8e0d8,#d99c8a', '#f4d4dc,#d8a0b0', '#fae3c8,#e0b888'];
+      const picked = hues[Math.floor(Math.random() * hues.length)];
+      petal.style.background = 'radial-gradient(ellipse at 30% 30%,' + picked + ')';
+      petal.style.borderRadius = '80% 0 80% 0';
+    }
+    
+    container.appendChild(petal);
+    setTimeout(() => petal.remove(), 800);
+  }
+}
+
+window.addEventListener('mousemove', spawnTrail);
+window.addEventListener('click', spawnBurst);
+
+// ============ MUSIC CONTROLS ============
+const bgMusic = document.getElementById('bg-music');
+const musicToggle = document.getElementById('music-toggle');
+
+// Restore mute/play state from safeStorage
+if (safeStorage.getItem('musicPaused') === 'true') {
+  musicToggle.classList.remove('playing');
+  musicToggle.classList.add('muted');
+} else {
+  musicToggle.classList.remove('muted');
+}
+
+function playMusic() {
+  if (!bgMusic) return;
+  bgMusic.play().then(() => {
+    musicToggle.classList.add('playing');
+    musicToggle.classList.remove('muted');
+    safeStorage.setItem('musicPaused', 'false');
+  }).catch(err => {
+    console.log("Playback blocked by browser.");
+  });
+}
+
+function pauseMusic() {
+  if (!bgMusic) return;
+  bgMusic.pause();
+  musicToggle.classList.remove('playing');
+  musicToggle.classList.add('muted');
+  safeStorage.setItem('musicPaused', 'true');
+}
+
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) {
+      playMusic();
+    } else {
+      pauseMusic();
+    }
+  });
+
+  document.addEventListener('click', function autoPlayOnClick() {
+    if (bgMusic.paused && safeStorage.getItem('musicPaused') !== 'true') {
+      playMusic();
+    }
+    document.removeEventListener('click', autoPlayOnClick);
+  }, { capture: true, once: true });
+}
+</script>
+
+<audio id="bg-music" src="images/Audio.mp3" loop></audio>
+<button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
+  <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"></path>
+    <circle cx="6" cy="18" r="3"></circle>
+    <circle cx="18" cy="16" r="3"></circle>
+  </svg>
+</button>
+
+</body>
+</html>
