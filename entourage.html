@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Wedding Entourage — Ed & Louiella</title>
-
+<link rel="icon" type="image/png" sizes="32x32" href="f1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
@@ -424,6 +424,39 @@ section { padding: 90px 20px; position: relative; }
   transform: rotate(45deg);
   border-radius: 99px;
 }
+
+/* ============ SCROLL REVEALS ============ */
+.reveal-fade,
+.reveal-up,
+.reveal-scale {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.reveal-fade {
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade.revealed {
+  opacity: 1;
+}
+
+.reveal-up {
+  transform: translateY(35px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  transform: scale(0.93);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
 </style>
 </head>
 
@@ -483,10 +516,10 @@ section { padding: 90px 20px; position: relative; }
   
   <div class="maxw" style="position: relative; z-index: 2;">
     <div class="center">
-      <div class="tracking">With us at the altar</div>
-      <h1 class="font-script title shimmer">Our Entourage</h1>
-      <p class="font-mail subtitle">the people who shaped our story</p>
-      <p class="tracking" style="margin-top:20px;letter-spacing:.2em;">Ed &amp; Louiella · August 1, 2026</p>
+      <div class="tracking reveal-up">With us at the altar</div>
+      <h1 class="font-script title shimmer reveal-fade" style="transition-delay:0.15s;">Our Entourage</h1>
+      <p class="font-mail subtitle reveal-up" style="transition-delay:0.3s;">the people who shaped our story</p>
+      <p class="tracking reveal-up" style="margin-top:20px;letter-spacing:.2em;transition-delay:0.45s;">Ed &amp; Louiella · August 1, 2026</p>
     </div>
   </div>
 </section>
@@ -678,6 +711,14 @@ section { padding: 90px 20px; position: relative; }
 
   </div>
 </section>
+<audio id="bg-music" src="images/Audio.mp3" loop></audio>
+<button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
+  <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"></path>
+    <circle cx="6" cy="18" r="3"></circle>
+    <circle cx="18" cy="16" r="3"></circle>
+  </svg>
+</button>
 
 <script>
 // Safe localStorage wrapper for local file:/// compatibility
@@ -808,20 +849,61 @@ function spawnBurst(e) {
 window.addEventListener('mousemove', spawnTrail);
 window.addEventListener('click', spawnBurst);
 
+// ============ SCROLL REVEALS & CARD CLASS INJECTION ============
+function initScrollReveals() {
+  // Inject reveal classes into HTML elements dynamically
+  document.querySelectorAll('.card').forEach((card) => {
+    card.classList.add('reveal-scale');
+  });
+  document.querySelectorAll('.section-label').forEach((label) => {
+    label.classList.add('reveal-up');
+  });
+  document.querySelectorAll('.center .btn').forEach((btn) => {
+    btn.classList.add('reveal-scale');
+  });
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px -10px -50px -10px',
+    threshold: 0.05
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const targets = document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-scale');
+  targets.forEach(target => {
+    revealObserver.observe(target);
+  });
+}
+
+// Run scroll reveals
+initScrollReveals();
+
 // ============ MUSIC CONTROLS ============
 const bgMusic = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
 
 // Restore mute/play state from safeStorage
 if (safeStorage.getItem('musicPaused') === 'true') {
-  musicToggle.classList.remove('playing');
-  musicToggle.classList.add('muted');
+  if (musicToggle) {
+    musicToggle.classList.remove('playing');
+    musicToggle.classList.add('muted');
+  }
 } else {
-  musicToggle.classList.remove('muted');
+  if (musicToggle) {
+    musicToggle.classList.remove('muted');
+  }
 }
 
 function playMusic() {
-  if (!bgMusic) return;
+  if (!bgMusic || !musicToggle) return;
   bgMusic.play().then(() => {
     musicToggle.classList.add('playing');
     musicToggle.classList.remove('muted');
@@ -832,7 +914,7 @@ function playMusic() {
 }
 
 function pauseMusic() {
-  if (!bgMusic) return;
+  if (!bgMusic || !musicToggle) return;
   bgMusic.pause();
   musicToggle.classList.remove('playing');
   musicToggle.classList.add('muted');
@@ -855,17 +937,12 @@ if (musicToggle && bgMusic) {
     }
     document.removeEventListener('click', autoPlayOnClick);
   }, { capture: true, once: true });
+
+  // Try to autoplay on page load if user has not explicitly muted
+  if (safeStorage.getItem('musicPaused') !== 'true') {
+    playMusic();
+  }
 }
 </script>
-
-<audio id="bg-music" src="images/Audio.mp3" loop></audio>
-<button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
-  <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M9 18V5l12-2v13"></path>
-    <circle cx="6" cy="18" r="3"></circle>
-    <circle cx="18" cy="16" r="3"></circle>
-  </svg>
-</button>
-
 </body>
 </html>
