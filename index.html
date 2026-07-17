@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ed & Louiella — Wedding Invitation</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="f1.png">
     <meta name="description" content="You are cordially invited to the wedding of Ed & Louiella, August 1, 2026 in Claveria, Misamis Oriental." />
     <meta property="og:title" content="Ed & Louiella — Wedding Invitation" />
     <meta property="og:description" content="August 1, 2026 · Claveria, Misamis Oriental" />
@@ -77,13 +78,19 @@
         
         .envelope {
             position: relative;
-            width: min(92vw, 520px);
+            width: min(92vw, 500px);
             aspect-ratio: 3/2;
-            background: linear-gradient(135deg, #f0d4ca, #e6b8aa);
-            border-radius: 6px;
-            box-shadow: 0 30px 80px -20px rgba(120, 60, 60, .4), 0 10px 30px -10px rgba(100, 50, 50, .3);
+            background: #d89c8c;
+            background-image: 
+                radial-gradient(circle at 35% 20%, rgba(253, 246, 237, 0.15) 0%, transparent 60%),
+                linear-gradient(135deg, #d29181 0%, #b27262 100%);
+            border-radius: 8px;
+            box-shadow: 
+                0 30px 80px -20px rgba(80, 30, 30, 0.45), 
+                0 10px 30px -10px rgba(60, 20, 20, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            transition: transform .3s;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
         }
         
         .envelope:active {
@@ -94,8 +101,8 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg, #f3dfd4, #e8c0b3);
-            border-radius: 6px;
-            overflow: hidden
+            border-radius: 8px;
+            z-index: 1;
         }
         
         .envelope-flap {
@@ -104,17 +111,18 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: linear-gradient(180deg, #e6b8aa, #d99c8a);
+            background: linear-gradient(180deg, #c78676, #a66555);
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top;
-            transition: transform 1.2s cubic-bezier(.7, -0.2, .3, 1.2);
+            transition: transform 1.2s cubic-bezier(.7, -0.2, .3, 1.2), z-index 0.1s linear 0s;
             z-index: 30;
-            box-shadow: 0 4px 10px rgba(80, 40, 30, .15);
+            box-shadow: 0 4px 15px rgba(60, 20, 20, .25);
         }
         
         .envelope.open .envelope-flap {
             transform: rotateX(180deg);
-            z-index: 1
+            z-index: 2;
+            transition: transform 1.2s cubic-bezier(.7, -0.2, .3, 1.2), z-index 0.1s linear 0.6s;
         }
         
         .envelope-front {
@@ -123,9 +131,10 @@
             left: 0;
             right: 0;
             height: 55%;
-            background: linear-gradient(180deg, #edc4b3, #dba08e);
+            background: linear-gradient(180deg, #d79585, #b77565);
             clip-path: polygon(0 100%, 0 0, 50% 80%, 100% 0, 100% 100%);
             z-index: 20;
+            box-shadow: 0 -4px 15px rgba(60, 20, 20, 0.1);
         }
         
         .envelope-seal {
@@ -133,49 +142,86 @@
             top: 38%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 30%, #7a2a2a, #4a1818);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #e8c97a;
-            font-family: var(--font-script);
-            font-size: 28px;
-            box-shadow: 0 4px 12px rgba(60, 20, 20, .5), inset 0 -4px 8px rgba(30, 10, 10, .4);
             z-index: 35;
             transition: opacity .4s ease;
         }
         
         .envelope.open .envelope-seal {
-            opacity: 0
+            opacity: 0;
+            pointer-events: none;
         }
         
         .letter {
             position: absolute;
             left: 6%;
             right: 6%;
-            bottom: 10%;
-            background: var(--cream);
-            height: 70%;
+            bottom: 8%;
+            background: #fdfaf6;
+            height: 78%;
             border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(80, 40, 30, .2);
+            box-shadow: 0 4px 15px rgba(80, 40, 30, 0.15);
             z-index: 10;
-            padding: 14% 8% 8%;
+            padding: 12% 8% 8%;
             text-align: center;
-            transition: transform 1.4s cubic-bezier(.4, 0, .2, 1) .4s, opacity .4s;
+            transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1) 0.3s, box-shadow 0.4s;
+            border: 1px solid rgba(198, 154, 77, 0.25);
+        }
+        
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(198, 154, 77, 0.35);
+            border-radius: 2px;
+            pointer-events: none;
         }
         
         .envelope.open .letter {
-            transform: translateY(-65%)
+            transform: translateY(-62%);
+            box-shadow: 0 15px 35px rgba(80, 30, 30, 0.25);
         }
-        /* ============ PAPER ============ */
         
-        .paper {
-            background: radial-gradient(ellipse at top left, #fbf3e6 0%, transparent 60%), radial-gradient(ellipse at bottom right, #f7e6dd 0%, transparent 60%), var(--cream);
-            box-shadow: 0 30px 60px -20px rgba(120, 60, 60, .25), 0 0 0 1px rgba(180, 140, 120, .4);
-            <img src="images/flower1.png" class="flower tl"><img src="images/flower2.png" class="flower tr"><img src="images/flower3.png" class="flower bl"><img src="images/flower4.png" class="flower br">
+        @media (max-width: 768px) {
+            .intro-garden-frame .tr-flower { width: 35vw; top: -2%; right: -5%; }
+            .intro-garden-frame .bl-flower { width: 38vw; bottom: -3%; left: -6%; }
+            .intro-garden-frame .br-flower { width: 38vw; bottom: -3%; right: -6%; }
+            .intro-garden-frame .tl-flower { width: 32vw; top: -2%; left: -5%; }
+        }
+        
+        /* ============ SCROLL REVEALS ============ */
+        .reveal-fade,
+        .reveal-up,
+        .reveal-scale {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+        
+        .reveal-fade {
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-fade.revealed {
+            opacity: 1;
+        }
+        
+        .reveal-up {
+            transform: translateY(35px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-scale {
+            transform: scale(0.93);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
         }
         /* ============ PETALS ============ */
         
@@ -344,6 +390,7 @@
             opacity: 0.88;
             filter: drop-shadow(0 15px 30px rgba(120,60,60,0.12));
             transition: transform 0.8s ease;
+            animation: flowerSway 8s ease-in-out infinite;
         }
         
         .tl-flower {
@@ -352,6 +399,8 @@
             width: 28vw;
             max-width: 320px;
             transform: rotate(-5deg);
+            animation-duration: 7s;
+            animation-delay: -1s;
         }
         .tr-flower {
             top: -6%;
@@ -359,6 +408,8 @@
             width: 30vw;
             max-width: 340px;
             transform: rotate(12deg);
+            animation-duration: 9s;
+            animation-delay: -3s;
         }
         .bl-flower {
             bottom: -8%;
@@ -366,6 +417,8 @@
             width: 35vw;
             max-width: 380px;
             transform: rotate(8deg);
+            animation-duration: 8s;
+            animation-delay: -5s;
         }
         .br-flower {
             bottom: -8%;
@@ -373,6 +426,8 @@
             width: 38vw;
             max-width: 410px;
             transform: rotate(-12deg);
+            animation-duration: 10s;
+            animation-delay: -2s;
         }
         
         .mid-left-flower {
@@ -382,6 +437,8 @@
             max-width: 260px;
             transform: translateY(-50%) rotate(40deg);
             opacity: 0.7;
+            animation-duration: 11s;
+            animation-delay: -4s;
         }
         .mid-right-flower {
             top: 55%;
@@ -390,6 +447,17 @@
             max-width: 280px;
             transform: translateY(-50%) rotate(-30deg);
             opacity: 0.7;
+            animation-duration: 9s;
+            animation-delay: -6s;
+        }
+
+        @keyframes flowerSway {
+            0%, 100% {
+                translate: 0 0;
+            }
+            50% {
+                translate: 6px -10px;
+            }
         }
 
         .gold-border {
@@ -929,6 +997,68 @@
                 padding: 3.5rem
             }
         }
+
+        /* Zoom & fade transition for the intro screen when unlocked */
+        .envelope-wrap.unlocked-zoom {
+            transform: scale(2.8) translate3d(0, -8%, 0);
+            filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                        filter 1.2s ease-in-out;
+        }
+
+        /* Full screen overlay for the transition */
+        #transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #fbf3ec 0%, #faf5ee 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        #transition-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Motif Animation (Rings & Flowers) */
+        .transition-motif {
+            transform: scale(0.6) rotate(-15deg);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        opacity 1.0s ease-in-out;
+        }
+        
+        #transition-overlay.show .transition-motif {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 1;
+        }
+
+        #main.reveal-transition {
+            display: block !important;
+            clip-path: circle(0% at 50% 50%);
+            animation: expandCircle 1.6s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+        }
+        
+        @keyframes expandCircle {
+            0% {
+                clip-path: circle(0% at 50% 50%);
+            }
+            100% {
+                clip-path: circle(150% at 50% 50%);
+            }
+        }
     </style>
 </head>
 
@@ -938,50 +1068,93 @@
     <!-- ============= INTRO ENVELOPE ============= -->
     <div id="intro" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2.5rem 1rem;background:radial-gradient(ellipse at top,#fae3e0,#f4cfd4 60%,#f0c4be);position:relative">
         <div id="petals-intro" style="pointer-events:none;position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0"></div>
-        <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;top:0;left:0;width:11rem;opacity:.9" aria-hidden>
-    <g class="sway">
-      <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
-      <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
-      <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
-      <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
-      <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
-      <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
-      <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
-      <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
-      <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
-    </g>
-  </svg>
-        <svg class="flower-svg" viewBox="0 0 200 200" style="position:absolute;bottom:0;right:0;width:11rem;opacity:.9;transform:rotate(180deg)" aria-hidden>
-    <g class="sway">
-      <circle cx="40" cy="40" r="22" fill="#e8c0b3" opacity=".85"/>
-      <circle cx="55" cy="55" r="15" fill="#e8c4d4" opacity=".8"/>
-      <circle cx="25" cy="60" r="12" fill="#eadcb0" opacity=".85"/>
-      <circle cx="70" cy="30" r="10" fill="#f4e0d0" opacity=".9"/>
-      <path d="M40 40 Q 80 80 120 60 T 190 140" stroke="#8aa888" stroke-width="2" fill="none"/>
-      <ellipse cx="100" cy="70" rx="14" ry="6" fill="#9bb89a" transform="rotate(-25 100 70)"/>
-      <ellipse cx="140" cy="90" rx="16" ry="7" fill="#9bb89a" transform="rotate(20 140 90)"/>
-      <circle cx="160" cy="120" r="14" fill="#e8c0b3" opacity=".85"/>
-      <circle cx="175" cy="135" r="9" fill="#e8c4d4" opacity=".8"/>
-    </g>
-  </svg>
+        
+        <div class="envelope-wrap" style="position:relative; z-index:10;">
+            <!-- Swaying Garden Flowers around Envelope -->
+            <div class="intro-garden-frame" style="position:absolute; inset:-40px; pointer-events:none; z-index:5; overflow:visible;">
+                <img src="images/f2.png" class="gflower tr-flower sway" style="position:absolute; top:-10%; right:-10%; width:25vw; max-width:220px;" alt="">
+                <img src="images/f3.png" class="gflower bl-flower sway" style="position:absolute; bottom:-12%; left:-10%; width:28vw; max-width:260px;" alt="">
+                <img src="images/f4.png" class="gflower br-flower sway" style="position:absolute; bottom:-12%; right:-10%; width:28vw; max-width:260px;" alt="">
+                <img src="images/f5.png" class="gflower tl-flower sway" style="position:absolute; top:-10%; left:-10%; width:24vw; max-width:210px;" alt="">
+            </div>
 
-        <div class="envelope-wrap">
-            <div class="center font-script" style="font-size:2.25rem;color:var(--primary);text-shadow:0 1px 2px rgba(0,0,0,.05)">A letter for you…</div>
+            <div class="center font-script" style="font-size:2.25rem;color:var(--primary);text-shadow:0 1px 2px rgba(0,0,0,.05); position:relative; z-index:10;">A letter for you…</div>
 
-            <button id="envelope" class="envelope" aria-label="Open envelope" style="border:none;padding:0">
-      <div class="envelope-body">
-        <div class="letter">
-          <div class="font-script" style="font-size:1.5rem;color:var(--primary)">You're Invited</div>
-          <div class="mt-2 font-display" style="font-size:1.875rem;color:var(--fg)">Ed &amp; Louiella</div>
-          <div class="mt-1 text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Sealed With Love</div>
-        </div>
-      </div>
-      <div class="envelope-front"></div>
-      <div class="envelope-flap"></div>
-      <div class="envelope-seal font-script">E&amp;L</div>
-    </button>
+            <button id="envelope" class="envelope" aria-label="Open envelope" style="border:none;padding:0; position:relative; z-index:10; background:none;">
+                <div class="envelope-body">
+                    <!-- Beautiful floral liner background -->
+                    <div class="envelope-liner" style="position:absolute; inset:4px; border-radius:6px; background:#f7ebe3; overflow:hidden;">
+                        <svg viewBox="0 0 520 346" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.85;">
+                            <!-- Elegant leaf pattern -->
+                            <g stroke="#9bb89a" stroke-width="1" fill="none" opacity="0.4">
+                                <path d="M 260 20 Q 240 60 210 80 T 170 140"/>
+                                <path d="M 260 20 Q 280 60 310 80 T 370 140"/>
+                                <ellipse cx="230" cy="55" rx="6" ry="3" fill="#9bb89a" transform="rotate(-30 230 55)"/>
+                                <ellipse cx="290" cy="55" rx="6" ry="3" fill="#9bb89a" transform="rotate(30 290 55)"/>
+                                <ellipse cx="190" cy="100" rx="8" ry="4" fill="#9bb89a" transform="rotate(-40 190 100)"/>
+                                <ellipse cx="350" cy="100" rx="8" ry="4" fill="#9bb89a" transform="rotate(40 350 100)"/>
+                            </g>
+                            <circle cx="120" cy="80" r="30" fill="#e8c4d4" opacity="0.25" filter="blur(10px)"/>
+                            <circle cx="400" cy="80" r="35" fill="#e8c0b3" opacity="0.3" filter="blur(12px)"/>
+                            <circle cx="260" cy="50" r="25" fill="#eadcb0" opacity="0.25" filter="blur(8px)"/>
+                        </svg>
+                        <div style="position:absolute; inset:8px; border:1px dashed rgba(198, 154, 77, 0.4); border-radius:4px;"></div>
+                    </div>
+                </div>
+                
+                <div class="letter">
+                    <div class="font-script" style="font-size:1.6rem;color:var(--primary); margin-bottom: 0.1rem;">You're Invited</div>
+                    <div class="font-display" style="font-size:2rem;color:var(--fg); line-height: 1.25; margin-top:0.25rem;">Ed &amp; Louiella</div>
+                    <div style="margin: 0.6rem auto; width: 40px; border-top: 1px solid rgba(198,154,77,0.3);"></div>
+                    <div class="text-uppercase tracking-widest" style="font-size:.65rem;color:#8a6a60; font-weight:500;">Sealed With Love</div>
+                </div>
 
-            <p id="tap-hint" class="text-muted" style="font-size:.875rem;animation:pulse 2s infinite">tap the envelope to open</p>
+                <div class="envelope-front">
+                    <svg class="envelope-svg" viewBox="0 0 520 190" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2;">
+                        <!-- Inner double gold border along the V-top -->
+                        <path d="M 6 4 L 260 148 L 514 4" stroke="#c69a4d" stroke-width="1.5" fill="none" opacity="0.85"/>
+                        <path d="M 12 12 L 260 140 L 508 12" stroke="#c69a4d" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <!-- Gold corner vines -->
+                        <path d="M 10 180 Q 40 170 60 140 T 100 120" stroke="#c69a4d" stroke-width="1.2" fill="none" opacity="0.7"/>
+                        <path d="M 10 180 Q 70 175 90 150" stroke="#c69a4d" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <circle cx="60" cy="140" r="2" fill="#c69a4d" opacity="0.75"/>
+                        <circle cx="100" cy="120" r="2.5" fill="#c69a4d" opacity="0.85"/>
+                        <path d="M 510 180 Q 480 170 460 140 T 420 120" stroke="#c69a4d" stroke-width="1.2" fill="none" opacity="0.7"/>
+                        <path d="M 510 180 Q 450 175 430 150" stroke="#c69a4d" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <circle cx="460" cy="140" r="2" fill="#c69a4d" opacity="0.75"/>
+                        <circle cx="420" cy="120" r="2.5" fill="#c69a4d" opacity="0.85"/>
+                    </svg>
+                </div>
+
+                <div class="envelope-flap">
+                    <svg class="envelope-svg" viewBox="0 0 520 173" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2;">
+                        <path d="M 12 4 L 260 162 L 508 4" stroke="#c69a4d" stroke-width="1.5" fill="none" opacity="0.85"/>
+                        <path d="M 22 4 L 260 152 L 498 4" stroke="#c69a4d" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <g transform="translate(260, 140) scale(0.6)">
+                            <path d="M -20 -20 C -10 -30 10 -30 20 -20 C 10 -10 -10 -10 -20 -20 Z" fill="#c69a4d" opacity="0.8"/>
+                            <circle cx="0" cy="-5" r="3" fill="#c69a4d" opacity="0.9"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="envelope-seal" style="background:none; box-shadow:none; width:80px; height:80px;">
+                    <svg viewBox="0 0 80 80" style="width:100%; height:100%; filter: drop-shadow(0 6px 12px rgba(60,20,20,0.35));">
+                        <path d="M 40 5 C 62 3, 76 18, 75 40 C 74 62, 58 75, 40 75 C 22 75, 5 62, 5 40 C 5 18, 18 7, 40 5 Z" fill="url(#wax-gradient)"/>
+                        <circle cx="40" cy="40" r="26" stroke="rgba(232, 201, 122, 0.4)" stroke-width="1.2" fill="none"/>
+                        <path d="M 22 40 C 22 28, 30 20, 40 20 C 50 20, 58 28, 58 40 C 58 52, 50 60, 40 60" stroke="#e8c97a" stroke-width="0.8" fill="none" stroke-dasharray="2 3"/>
+                        <text x="40" y="47" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="600" fill="#e8c97a" text-anchor="middle" letter-spacing="1">E&amp;L</text>
+                        <defs>
+                            <radialGradient id="wax-gradient" cx="35%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="#a63d3d"/>
+                                <stop offset="70%" stop-color="#621b1b"/>
+                                <stop offset="100%" stop-color="#3d0a0a"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </button>
+
+            <p id="tap-hint" class="text-muted" style="font-size:.875rem;animation:pulse 2s infinite; position:relative; z-index:10;">tap the envelope to open</p>
 
             <form id="pwd-form" style="display:none;width:100%;max-width:24rem" class="fade-in">
                 <div class="paper rounded-xl p-6 center">
@@ -1011,10 +1184,6 @@
             <img src="images/f1.png" class="gflower mid-right-flower" alt="">
         </div>
         <div class="gold-border"></div>
-
-
-
-        <!-- HERO -->
         <section class="section center" style="
             min-height:100vh;
             display:flex;
@@ -1053,13 +1222,12 @@
       </g>
     </svg>
 
-            <div class="font-mail" style="font-size:1.25rem;color:rgb(255, 255, 255);transform:rotate(-2deg)">— from our hearts to yours —</div>
-            <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#ffffff;margin-top:1.5rem">The Wedding Of</div>
-            <h1 class="font-script shimmer-text" style="font-size:4.5rem;line-height:1;margin-top:1rem">Ed <span class="font-display italic" style="font-size:3rem;color:var(--mauve);vertical-align:middle">&amp;</span> Louiella</h1>
-            <div class="text-uppercase tracking-widest" style="font-size:.875rem;color:#ffffff;margin-top:1.5rem">August · 01 · 2026</div>
+            <div class="font-mail reveal-fade" style="font-size:1.25rem;color:rgb(255, 255, 255);transform:rotate(-2deg); transition-delay:0.2s;">— from our hearts to yours —</div>
+            <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#ffffff;margin-top:1.5rem; transition-delay:0.4s;">The Wedding Of</div>
+            <h1 class="font-script shimmer-text reveal-fade" style="font-size:4.5rem;line-height:1;margin-top:1rem; transition-delay:0.6s;">Ed <span class="font-display italic" style="font-size:3rem;color:var(--mauve);vertical-align:middle">&amp;</span> Louiella</h1>
+            <div class="text-uppercase tracking-widest reveal-up" style="font-size:.875rem;color:#ffffff;margin-top:1.5rem; transition-delay:0.8s;">August · 01 · 2026</div>
 
-
-            <p class="font-body italic" style="margin-top:2.5rem;font-size:1.25rem;max-width:36rem;color:rgb(255, 255, 255);line-height:1.7">
+            <p class="font-body italic reveal-up" style="margin-top:2.5rem;font-size:1.25rem;max-width:36rem;color:rgb(255, 255, 255);line-height:1.7; transition-delay:1s;">
                 "Together with their families, they request the honor of your presence as they celebrate their marriage."
             </p>
 
@@ -1068,7 +1236,7 @@
 
         <!-- MAIL LETTER -->
         <section class="section" style="background:linear-gradient(180deg, rgba(247, 230, 221, 0.4), rgba(250, 227, 224, 0.5))">
-            <div class="paper maxw-sm" style="padding:2rem 3.5rem;border-radius:.375rem;position:relative">
+            <div class="paper maxw-sm reveal-scale" style="padding:2rem 3.5rem;border-radius:.375rem;position:relative">
  
                  <img src="images/f1.png" style="position:absolute;
                      top:10px;
@@ -1096,13 +1264,13 @@
         <!-- COUNTDOWN + SCRATCH -->
         <section class="section center" style="background:linear-gradient(180deg, rgba(247,230,221,0.5), rgba(250,227,224,0.6))">
             <div class="maxw">
-                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Counting the days</div>
-                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Until forever begins</h2>
-                <div id="countdown" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:36rem;margin-left:auto;margin-right:auto"></div>
+                <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">Counting the days</div>
+                <h2 class="font-script reveal-up" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem; transition-delay:0.1s;">Until forever begins</h2>
+                <div id="countdown" class="reveal-scale" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:36rem;margin-left:auto;margin-right:auto; transition-delay:0.2s;"></div>
 
-                <div style="margin-top:4rem">
+                <div style="margin-top:4rem" class="reveal-up" style="transition-delay:0.3s;">
                     <p class="text-muted" style="font-size:.875rem;margin-bottom:1rem">✦ Scratch below to reveal the date ✦</p>
-                    <div id="scratch-wrap" style="position:relative;width:320px;height:150px;margin:0 auto;border-radius:1rem;overflow:hidden;touch-action:none;user-select:none">
+                    <div id="scratch-wrap" class="reveal-scale" style="position:relative;width:320px;height:150px;margin:0 auto;border-radius:1rem;overflow:hidden;touch-action:none;user-select:none; transition-delay:0.4s;">
                         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--cream);text-align:center;padding:1rem">
                             <div>
                                 <div class="font-script" style="font-size:1.875rem;color:var(--primary)">Save the Date</div>
@@ -1119,7 +1287,7 @@
         <!-- CEREMONY -->
         <section class="section" style="background:linear-gradient(180deg, rgba(252, 232, 240, 0.5), rgba(250, 227, 224, 0.6))">
             <div class="maxw-sm">
-                <div class="paper rounded-2xl p-8 center" style="position:relative;overflow:hidden;border:none;">
+                <div class="paper rounded-2xl p-8 center reveal-scale" style="position:relative;overflow:hidden;border:none;">
                     <video autoplay loop muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
                         <source src="images/WedVid.mp4" type="video/mp4">
                     </video>
@@ -1138,7 +1306,7 @@
         <!-- PHOTO -->
         <section class="section" style="background:linear-gradient(180deg, rgba(250, 227, 224, 0.5), rgba(251, 240, 216, 0.5))">
             <div style="max-width:48rem;margin:0 auto">
-                <div style="position:relative;aspect-ratio:16/10;border-radius:1rem;overflow:hidden;box-shadow:0 30px 80px -20px rgba(80,40,30,.5)">
+                <div class="reveal-scale" style="position:relative;aspect-ratio:16/10;border-radius:1rem;overflow:hidden;box-shadow:0 30px 80px -20px rgba(80,40,30,.5)">
 
                     <img src="./images/2.jpg" alt="Ed and Louiella embracing" style="width:100%;height:100%;object-fit:cover" loading="lazy">
 
@@ -1154,13 +1322,10 @@
         <!-- GUESTS -->
         <section class="section center" style="background:linear-gradient(180deg, rgba(251, 240, 216, 0.55), rgba(247, 235, 225, 0.65))">
             <div class="maxw">
-                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Our Honored Guests</div>
-                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Entourage</h2>
+                <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">Our Honored Guests</div>
+                <h2 class="font-script reveal-up" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem; transition-delay:0.1s;">Entourage</h2>
 
-
-               
-
-                <a href="entourage.html?v=2" class="rounded-full bg-primary text-cream inline-block btn-pump" style="margin-top:4.5rem;padding:1rem 2rem;font-family:var(--font-sans);letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.3)">
+                <a href="entourage.html?v=2" class="rounded-full bg-primary text-cream inline-block btn-pump reveal-scale" style="margin-top:4.5rem;padding:1rem 2rem;font-family:var(--font-sans);letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.3); transition-delay:0.2s;">
         ✦ View Our Entourage ✦
       </a>
             </div>
@@ -1171,11 +1336,11 @@
         <!-- DRESS CODE -->
         <section class="section center" style="background:linear-gradient(180deg, rgba(230, 239, 216, 0.55), rgba(221, 238, 224, 0.65))">
             <div class="maxw-sm">
-                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Dress Code</div>
-                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Formal / Semi-Formal</h2>
-                <p class="text-muted" style="margin-top:1rem">Preferred colors — any soft pastel hue.</p>
+                <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">Dress Code</div>
+                <h2 class="font-script reveal-up" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem; transition-delay:0.1s;">Formal / Semi-Formal</h2>
+                <p class="text-muted reveal-up" style="margin-top:1rem; transition-delay:0.2s;">Preferred colors — any soft pastel hue.</p>
 
-                <div style="margin-top:2.5rem;width:16rem;height:16rem;margin-left:auto;margin-right:auto;position:relative">
+                <div class="reveal-scale" style="margin-top:2.5rem;width:16rem;height:16rem;margin-left:auto;margin-right:auto;position:relative; transition-delay:0.3s;">
                     <div class="sway" style="position:absolute;inset:0;border-radius:9999px;background:conic-gradient(#f4c2c2 0deg 45deg,#ffd8b1 45deg 90deg,#fff1b6 90deg 135deg,#c9e4ca 135deg 180deg,#b5d8eb 180deg 225deg,#c8b6e2 225deg 270deg,#e2c2d8 270deg 315deg,#f0dab1 315deg 360deg)"></div>
                     <div style="position:absolute;inset:1.5rem;border-radius:9999px;background:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem">
                         <div>
@@ -1185,7 +1350,7 @@
                     </div>
                 </div>
 
-                <div class="paper rounded-full inline-block" style="margin-top:2rem;padding:.75rem 1.5rem;font-size:.875rem;color:rgba(74,42,42,.8);font-style:italic">
+                <div class="paper rounded-full inline-block reveal-up" style="margin-top:2rem;padding:.75rem 1.5rem;font-size:.875rem;color:rgba(74,42,42,.8);font-style:italic; transition-delay:0.4s;">
                     Please refrain from wearing <span class="font-display" style="color:var(--primary)">white</span>.
                 </div>
             </div>
@@ -1193,17 +1358,17 @@
 
         <!-- RSVP -->
         <section class="section center" style="background:linear-gradient(180deg, rgba(250, 227, 224, 0.55), rgba(244, 207, 212, 0.65))">
-            <div class="paper rounded-3xl maxw-sm" style="padding:2.5rem 3.5rem;margin:0 auto">
-                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">RSVP</div>
-                <h2 class="font-script" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem">Will you join us?</h2>
-                <p class="text-muted" style="margin-top:.75rem">Kindly confirm your attendance on or before <span class="font-display" style="font-style:normal;color:var(--primary)">July 27, 2026</span>.</p>
+            <div class="paper rounded-3xl maxw-sm reveal-scale" style="padding:2.5rem 3.5rem;margin:0 auto">
+                <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">RSVP</div>
+                <h2 class="font-script reveal-up" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem; transition-delay:0.1s;">Will you join us?</h2>
+                <p class="text-muted reveal-up" style="margin-top:.75rem; transition-delay:0.2s;">Kindly confirm your attendance on or before <span class="font-display" style="font-style:normal;color:var(--primary)">July 27, 2026</span>.</p>
 
-                <div class="bg-cream" style="margin-top:2rem;display:inline-block;padding:1.5rem;border-radius:1rem;box-shadow:0 10px 30px -10px rgba(0,0,0,.2)">
+                <div class="bg-cream reveal-fade" style="margin-top:2rem;display:inline-block;padding:1.5rem;border-radius:1rem;box-shadow:0 10px 30px -10px rgba(0,0,0,.2); transition-delay:0.3s;">
                     <img src="images/QR.png" alt="RSVP QR Code" style="width:240px;height:240px;object-fit:contain;display:block;border-radius:.5rem;">
                 </div>
-                <p class="text-uppercase" style="font-size:.75rem;letter-spacing:.2em;color:#8a6a60;margin-top:1rem">scan to RSVP</p>
+                <p class="text-uppercase reveal-up" style="font-size:.75rem;letter-spacing:.2em;color:#8a6a60;margin-top:1rem; transition-delay:0.4s;">scan to RSVP</p>
 
-                <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.875rem;color:rgba(74,42,42,.8)">
+                <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.875rem;color:rgba(74,42,42,.8)" class="reveal-up" style="transition-delay:0.5s;">
                     <div class="paper rounded-full" style="padding:.5rem 1rem">0965 559 0462</div>
                     <div class="paper rounded-full" style="padding:.5rem 1rem">louiellaruthbagongon@gmail.com</div>
                 </div>
@@ -1213,11 +1378,11 @@
         <!-- REMINDERS / GIFT -->
         <section class="section" style="background:linear-gradient(180deg, rgba(250,227,224,0.6), rgba(244,207,212,0.7))">
             <div class="maxw grid md-grid-cols-2 gap-6" style="grid-template-columns:1fr">
-                <div class="paper rounded-2xl p-8 center">
+                <div class="paper rounded-2xl p-8 center reveal-up">
                     <h3 class="font-display" style="font-size:1.5rem;color:var(--primary);">Friendly Reminder</h3>
                     <p class="text-muted" style="margin-top:.75rem">Kindly keep your phones silent during the ceremony.</p>
                 </div>
-                <div class="paper rounded-2xl p-8 center">
+                <div class="paper rounded-2xl p-8 center reveal-up" style="transition-delay:0.15s;">
                     <h3 class="font-display" style="font-size:1.5rem;color:var(--primary);">A Note on Gifts</h3>
                     <p class="text-muted" style="margin-top:.75rem">Your presence is the greatest gift of all. Should you wish to bless us further, a monetary gift would be sincerely appreciated.</p>
                 </div>
@@ -1263,15 +1428,62 @@
     </svg>
             
             <div style="position: relative; z-index: 3;">
-                <div class="text-uppercase tracking-widest" style="font-size:.75rem;color:#8a6a60">Thank you</div>
-                <h2 class="font-script shimmer-text" style="font-size:4.5rem;margin-top:.75rem">With all our love</h2>
-                <p class="font-mail" style="max-width:36rem;margin:1.5rem auto 0;font-size:1.5rem;color:rgba(74,42,42,.8)">
+                <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">Thank you</div>
+                <h2 class="font-script shimmer-text reveal-fade" style="font-size:4.5rem;margin-top:.75rem; transition-delay:0.1s;">With all our love</h2>
+                <p class="font-mail reveal-up" style="max-width:36rem;margin:1.5rem auto 0;font-size:1.5rem;color:rgba(74,42,42,.8); transition-delay:0.2s;">
                     Thank you for being part of our love story and celebrating this unforgettable moment with us.
                 </p>
-                <div class="font-display" style="margin-top:2.5rem;font-size:1.875rem;color:var(--primary);position:relative;z-index:3;">— Ed &amp; Louiella —</div>
+                <div class="font-display reveal-up" style="margin-top:2.5rem;font-size:1.875rem;color:var(--primary);position:relative;z-index:3; transition-delay:0.3s;">— Ed &amp; Louiella —</div>
             </div>
-        </section>
     </main>
+
+    <!-- Fullscreen Wedding Wreath & Rings Transition Overlay -->
+    <div id="transition-overlay">
+        <div class="transition-motif" style="position: relative; width: 220px; height: 220px; display: flex; align-items: center; justify-content: center;">
+            <!-- Glowing background -->
+            <div style="position: absolute; width: 180px; height: 180px; background: radial-gradient(circle, rgba(198,154,77,0.2) 0%, transparent 70%); filter: blur(10px);"></div>
+            
+            <!-- Wedding Rings and Wreath SVG -->
+            <svg viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+                <!-- Floral Wreath -->
+                <g class="sway" style="transform-origin: center;">
+                    <circle cx="100" cy="100" r="75" stroke="rgba(198, 154, 77, 0.3)" stroke-width="1.5" stroke-dasharray="3 5" fill="none"/>
+                    <!-- Delicate pastel flowers matching invitation -->
+                    <circle cx="100" cy="25" r="8" fill="#e8c0b3" opacity="0.9"/>
+                    <circle cx="100" cy="25" r="3" fill="#eadcb0"/>
+                    <circle cx="100" cy="175" r="9" fill="#e8c4d4" opacity="0.9"/>
+                    <circle cx="100" cy="175" r="3.5" fill="#eadcb0"/>
+                    <circle cx="25" cy="100" r="7" fill="#eadcb0" opacity="0.9"/>
+                    <circle cx="175" cy="100" r="8.5" fill="#f4e0d0" opacity="0.95"/>
+                    
+                    <!-- Leaves -->
+                    <ellipse cx="60" cy="45" rx="8" ry="4" fill="#9bb89a" transform="rotate(-30 60 45)"/>
+                    <ellipse cx="140" cy="45" rx="8" ry="4" fill="#9bb89a" transform="rotate(30 140 45)"/>
+                    <ellipse cx="50" cy="150" rx="9" ry="4.5" fill="#9bb89a" transform="rotate(35 50 150)"/>
+                    <ellipse cx="150" cy="150" rx="9" ry="4.5" fill="#9bb89a" transform="rotate(-35 150 150)"/>
+                </g>
+                
+                <!-- Interlocking Gold Wedding Rings -->
+                <g transform="translate(10, 10)">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#dfba6b" />
+                            <stop offset="50%" stop-color="#c69a4d" />
+                            <stop offset="100%" stop-color="#9a7326" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Ring 1 -->
+                    <ellipse cx="80" cy="90" rx="26" ry="26" stroke="url(#goldGradient)" stroke-width="5" fill="none" transform="rotate(-12 80 90)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))" />
+                    <!-- Ring 2 -->
+                    <ellipse cx="100" cy="90" rx="26" ry="26" stroke="url(#goldGradient)" stroke-width="5" fill="none" transform="rotate(12 100 90)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))" />
+                    <!-- Overlap arc to make them lock -->
+                    <path d="M 91 69 A 26 26 0 0 1 106 90" stroke="url(#goldGradient)" stroke-width="5" fill="none" transform="rotate(-12 80 90)" />
+                </g>
+            </svg>
+        </div>
+        <!-- Subtle Loading Text -->
+        <div class="font-script" style="font-size: 2.25rem; color: var(--primary); margin-top: 1rem; text-align: center;">Preparing your invitation…</div>
+    </div>
     
     <audio id="bg-music" src="images/Audio.mp3" loop></audio>
     <button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
@@ -1599,23 +1811,79 @@
             if (pwdInput.value.trim() === '080126') {
                 pwdErr.style.display = 'none';
                 safeStorage.setItem('invitationUnlocked', 'true');
+                
+                // 1. Trigger envelope zoom & blur
+                const envelopeWrap = document.querySelector('.envelope-wrap');
+                if (envelopeWrap) {
+                    envelopeWrap.classList.add('unlocked-zoom');
+                }
+                
+                // 2. Show transition overlay with rings/wreath
+                const overlay = document.getElementById('transition-overlay');
+                if (overlay) {
+                    overlay.classList.add('show');
+                }
+                
+                // 3. Perform seamless transition after zoom has started
                 setTimeout(() => {
+                    // Hide intro, show main with expand transition
                     intro.style.display = 'none';
                     main.style.display = 'block';
+                    main.classList.add('reveal-transition');
+                    
                     document.body.style.overflow = 'auto';
                     window.scrollTo(0, 0);
+                    
+                    // Initialize components
                     startCountdown();
                     initScratch();
                     renderGuests();
                     renderEntourage();
                     makePetals('petals-main', 30);
-                }, 400);
+                    initScrollReveals();
+                    
+                    // 4. Fade out overlay once expansion is near completion
+                    setTimeout(() => {
+                        if (overlay) {
+                            overlay.classList.remove('show');
+                        }
+                        // Clean up reveal animation class
+                        setTimeout(() => {
+                            main.classList.remove('reveal-transition');
+                            if (overlay) overlay.style.display = 'none';
+                        }, 600);
+                    }, 1200);
+                    
+                }, 1000); // Wait for envelope zoom to peak
             } else {
                 pwdErr.style.display = 'block';
                 pwdInput.value = '';
                 pwdInput.focus();
             }
         });
+
+        // ============ SCROLL REVEALS ============
+        function initScrollReveals() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px -10px -50px -10px',
+                threshold: 0.05
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const targets = document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-scale');
+            targets.forEach(target => {
+                revealObserver.observe(target);
+            });
+        }
 
         // ============ PETALS ============
         function makePetals(containerId, count) {
@@ -1892,6 +2160,7 @@
             renderGuests();
             renderEntourage();
             makePetals('petals-main', 30);
+            initScrollReveals(); // Initialize scroll reveals
         } else {
             document.body.style.overflow = 'hidden';
             makePetals('petals-intro', 28);
