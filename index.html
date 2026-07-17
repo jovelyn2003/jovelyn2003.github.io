@@ -1059,6 +1059,41 @@
                 clip-path: circle(150% at 50% 50%);
             }
         }
+
+        /* RSVP responsive container and contact elements */
+        .rsvp-contacts {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+            font-size: .875rem;
+            color: rgba(74, 42, 42, .8);
+        }
+        .rsvp-contacts .contact-item {
+            width: 100%;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        @media (min-width: 600px) {
+            .rsvp-contacts {
+                flex-direction: row;
+                gap: .75rem;
+            }
+            .rsvp-contacts .contact-item {
+                width: calc(50% - 0.375rem);
+            }
+        }
+        @media (max-width: 480px) {
+            .responsive-card {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            .rsvp-contacts .contact-item {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
@@ -1236,7 +1271,7 @@
 
         <!-- MAIL LETTER -->
         <section class="section" style="background:linear-gradient(180deg, rgba(247, 230, 221, 0.4), rgba(250, 227, 224, 0.5))">
-            <div class="paper maxw-sm reveal-scale" style="padding:2rem 3.5rem;border-radius:.375rem;position:relative">
+            <div class="paper maxw-sm responsive-card reveal-scale" style="padding:2rem 3.5rem;border-radius:.375rem;position:relative">
  
                  <img src="images/f1.png" style="position:absolute;
                      top:10px;
@@ -1358,7 +1393,7 @@
 
         <!-- RSVP -->
         <section class="section center" style="background:linear-gradient(180deg, rgba(250, 227, 224, 0.55), rgba(244, 207, 212, 0.65))">
-            <div class="paper rounded-3xl maxw-sm reveal-scale" style="padding:2.5rem 3.5rem;margin:0 auto">
+            <div class="paper rounded-3xl maxw-sm responsive-card reveal-scale" style="padding:2.5rem 3.5rem;margin:0 auto">
                 <div class="text-uppercase tracking-widest reveal-up" style="font-size:.75rem;color:#8a6a60">RSVP</div>
                 <h2 class="font-script reveal-up" style="font-size:3.75rem;color:var(--primary);margin-top:.5rem; transition-delay:0.1s;">Will you join us?</h2>
                 <p class="text-muted reveal-up" style="margin-top:.75rem; transition-delay:0.2s;">Kindly confirm your attendance on or before <span class="font-display" style="font-style:normal;color:var(--primary)">July 27, 2026</span>.</p>
@@ -1368,9 +1403,17 @@
                 </div>
                 <p class="text-uppercase reveal-up" style="font-size:.75rem;letter-spacing:.2em;color:#8a6a60;margin-top:1rem; transition-delay:0.4s;">scan to RSVP</p>
 
-                <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.875rem;color:rgba(74,42,42,.8)" class="reveal-up" style="transition-delay:0.5s;">
-                    <div class="paper rounded-full" style="padding:.5rem 1rem">0965 559 0462</div>
-                    <div class="paper rounded-full" style="padding:.5rem 1rem">louiellaruthbagongon@gmail.com</div>
+                <!-- Tap here to RSVP Button -->
+                <div class="reveal-up" style="margin-top: 1rem; transition-delay: 0.45s;">
+                    <span style="font-size: 0.875rem; color: #8a6a60; display: block; margin-bottom: 0.75rem;">— or —</span>
+                    <a href="https://q.me-qr.com/hlyw7s7z" target="_blank" rel="noopener" class="rounded-full bg-primary text-cream btn-pump" style="display:inline-block; padding:0.75rem 2rem; font-family:var(--font-sans); letter-spacing:0.15em; text-transform:uppercase; font-size:0.75rem; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.15);">
+                        ✦ Tap here to RSVP Online ✦
+                    </a>
+                </div>
+
+                <div class="rsvp-contacts reveal-up" style="transition-delay:0.5s;">
+                    <div class="paper rounded-full contact-item" style="padding:.5rem 1rem">09655590462</div>
+                    <div class="paper rounded-full contact-item" style="padding:.5rem 1rem">louiellaruthbagongon@gmail.com</div>
                 </div>
             </div>
         </section>
@@ -1485,7 +1528,7 @@
         <div class="font-script" style="font-size: 2.25rem; color: var(--primary); margin-top: 1rem; text-align: center;">Preparing your invitation…</div>
     </div>
     
-    <audio id="bg-music" src="images/Audio.mp3" loop></audio>
+    <audio id="bg-music" src="images/Audio.mp3" preload="auto" autoplay loop></audio>
     <button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
         <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18V5l12-2v13"></path>
@@ -2288,6 +2331,18 @@
             safeStorage.setItem('musicPaused', 'true');
         }
 
+        const playEvents = ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'];
+        function attemptPlay() {
+            if (bgMusic && bgMusic.paused && safeStorage.getItem('musicPaused') !== 'true') {
+                playMusic();
+            }
+            if (bgMusic && !bgMusic.paused) {
+                playEvents.forEach(evt => {
+                    document.removeEventListener(evt, attemptPlay, { capture: true });
+                });
+            }
+        }
+
         if (musicToggle && bgMusic) {
             musicToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -2301,12 +2356,15 @@
             if (envelopeBtn) envelopeBtn.addEventListener('click', playMusic);
             if (pwdSubmitForm) pwdSubmitForm.addEventListener('submit', playMusic);
 
-            document.addEventListener('click', function autoPlayOnClick() {
-                if (bgMusic.paused && safeStorage.getItem('musicPaused') !== 'true') {
-                    playMusic();
-                }
-                document.removeEventListener('click', autoPlayOnClick);
-            }, { capture: true, once: true });
+            // Register interaction listeners
+            playEvents.forEach(evt => {
+                document.addEventListener(evt, attemptPlay, { capture: true, once: true });
+            });
+
+            // Try to autoplay on page load if user has not explicitly muted
+            if (safeStorage.getItem('musicPaused') !== 'true') {
+                playMusic();
+            }
         }
     </script>
 </body>
