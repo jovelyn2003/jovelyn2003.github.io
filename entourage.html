@@ -706,12 +706,12 @@ section { padding: 90px 20px; position: relative; }
     </div>
 
     <div class="center">
-      <a href="index.html" class="btn">✦ Back to Invitation ✦</a>
+      <a href="index.html" id="back-to-invitation" class="btn">✦ Back to Invitation ✦</a>
     </div>
 
   </div>
 </section>
-<audio id="bg-music" src="images/Audio.mp3" loop></audio>
+<audio id="bg-music" src="images/Audio.mp3" preload="auto" autoplay loop></audio>
 <button id="music-toggle" aria-label="Toggle background music" class="music-btn muted">
   <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M9 18V5l12-2v13"></path>
@@ -889,18 +889,7 @@ initScrollReveals();
 // ============ MUSIC CONTROLS ============
 const bgMusic = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
-
-// Restore mute/play state from safeStorage
-if (safeStorage.getItem('musicPaused') === 'true') {
-  if (musicToggle) {
-    musicToggle.classList.remove('playing');
-    musicToggle.classList.add('muted');
-  }
-} else {
-  if (musicToggle) {
-    musicToggle.classList.remove('muted');
-  }
-}
+const backBtn = document.getElementById('back-to-invitation');
 
 function playMusic() {
   if (!bgMusic || !musicToggle) return;
@@ -909,7 +898,7 @@ function playMusic() {
     musicToggle.classList.remove('muted');
     safeStorage.setItem('musicPaused', 'false');
   }).catch(err => {
-    console.log("Playback blocked by browser.");
+    console.log("Playback blocked by browser, waiting for user interaction.");
   });
 }
 
@@ -921,7 +910,28 @@ function pauseMusic() {
   safeStorage.setItem('musicPaused', 'true');
 }
 
+const playEvents = ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'];
+function attemptPlay() {
+  if (bgMusic && bgMusic.paused) {
+    playMusic();
+  }
+  if (bgMusic && !bgMusic.paused) {
+    playEvents.forEach(evt => {
+      document.removeEventListener(evt, attemptPlay, { capture: true });
+    });
+  }
+}
+
 if (musicToggle && bgMusic) {
+  // Always try to play on load (user wants it to play regardless of previous state on this page)
+  playMusic();
+
+  // If blocked, listen to any common user activation events to play
+  playEvents.forEach(evt => {
+    document.addEventListener(evt, attemptPlay, { capture: true, once: true });
+  });
+
+  // Explicit toggle button
   musicToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     if (bgMusic.paused) {
@@ -930,18 +940,13 @@ if (musicToggle && bgMusic) {
       pauseMusic();
     }
   });
+}
 
-  document.addEventListener('click', function autoPlayOnClick() {
-    if (bgMusic.paused && safeStorage.getItem('musicPaused') !== 'true') {
-      playMusic();
-    }
-    document.removeEventListener('click', autoPlayOnClick);
-  }, { capture: true, once: true });
-
-  // Try to autoplay on page load if user has not explicitly muted
-  if (safeStorage.getItem('musicPaused') !== 'true') {
-    playMusic();
-  }
+// When going back to invitation, make sure state is set to playing (so it plays on index.html)
+if (backBtn) {
+  backBtn.addEventListener('click', () => {
+    safeStorage.setItem('musicPaused', 'false');
+  });
 }
 </script>
 </body>
