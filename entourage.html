@@ -457,6 +457,116 @@ section { padding: 90px 20px; position: relative; }
   opacity: 1;
   transform: scale(1);
 }
+
+/* ============ PARENTS SECTION & GOTHIC LINES ============ */
+.parents-card-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto 70px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  padding: 50px 70px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(198, 154, 77, 0.25);
+  transition: all 0.35s ease;
+}
+
+.parents-card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 80px rgba(170, 148, 73, 0.12);
+  border-color: rgba(170, 148, 73, 0.4);
+}
+
+.parents-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  text-align: center;
+}
+
+.parent-column h3 {
+  font-size: 15px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: #9c7d69;
+  margin-bottom: 25px;
+}
+
+.parent-column p {
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--fg);
+  margin: 8px 0;
+  font-weight: 400;
+}
+
+/* Gothic side lines styling */
+.gothic-side-line {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.gothic-side-line.left {
+  left: 25px;
+}
+
+.gothic-side-line.right {
+  right: 25px;
+}
+
+.gothic-line-segment {
+  position: absolute;
+  width: 1px;
+  background: var(--gold);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gothic-line-segment.top {
+  top: 25px;
+  height: calc(50% - 40px);
+}
+
+.gothic-line-segment.bottom {
+  bottom: 25px;
+  height: calc(50% - 40px);
+}
+
+.gothic-ornament {
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+}
+
+.gothic-ornament.mid {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .parents-card-wrapper {
+    padding: 45px 25px;
+    margin: 30px 10px 50px;
+  }
+  .gothic-side-line.left {
+    left: 12px;
+  }
+  .gothic-side-line.right {
+    right: 12px;
+  }
+  .parents-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
 </style>
 </head>
 
@@ -526,8 +636,74 @@ section { padding: 90px 20px; position: relative; }
 
 <section>
   <div class="maxw">
-    <!-- PRINCIPAL SPONSORS (PRIORITY) -->
+    <!-- BLESSINGS OF OUR PARENTS -->
     <div class="section-label" style="margin-top:0;">
+      <h2 class="font-script">With the Blessings of Our Parents</h2>
+      <p>We joyfully begin this new chapter with their love, prayers, and guidance.</p>
+    </div>
+
+    <div class="parents-card-wrapper">
+      <!-- Left Gothic Line -->
+      <div class="gothic-side-line left">
+        <svg class="gothic-ornament" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 L21 12 L12 22 L3 12 Z" fill="none" />
+          <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#c69a4d" />
+          <circle cx="12" cy="2" r="1.5" fill="#c69a4d" />
+          <circle cx="12" cy="22" r="1.5" fill="#c69a4d" />
+        </svg>
+        <div class="gothic-line-segment top"></div>
+        <svg class="gothic-ornament mid" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 C6 2, 2 6, 2 12 C2 18, 6 22, 12 22 C18 22, 22 18, 22 12 C22 6, 18 2, 12 2 Z" fill="#faf5ee" />
+          <path d="M12 4 L14 10 L20 12 L14 14 L12 20 L10 14 L4 12 L10 10 Z" fill="#c69a4d" />
+        </svg>
+        <div class="gothic-line-segment bottom"></div>
+        <svg class="gothic-ornament" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 L21 12 L12 22 L3 12 Z" fill="none" />
+          <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#c69a4d" />
+          <circle cx="12" cy="2" r="1.5" fill="#c69a4d" />
+          <circle cx="12" cy="22" r="1.5" fill="#c69a4d" />
+        </svg>
+      </div>
+
+      <!-- Parents Info Grid -->
+      <div class="parents-grid">
+        <div class="parent-column">
+          <h3>Groom's Parents</h3>
+          <p>Ed B. Posadas</p>
+          <p>Luz C. Posadas</p>
+        </div>
+        <div class="parent-column">
+          <h3>Bride's Parents</h3>
+          <p>Louie E. Bagongon</p>
+          <p>Helen H. Bagongon</p>
+        </div>
+      </div>
+
+      <!-- Right Gothic Line -->
+      <div class="gothic-side-line right">
+        <svg class="gothic-ornament" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 L21 12 L12 22 L3 12 Z" fill="none" />
+          <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#c69a4d" />
+          <circle cx="12" cy="2" r="1.5" fill="#c69a4d" />
+          <circle cx="12" cy="22" r="1.5" fill="#c69a4d" />
+        </svg>
+        <div class="gothic-line-segment top"></div>
+        <svg class="gothic-ornament mid" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 C6 2, 2 6, 2 12 C2 18, 6 22, 12 22 C18 22, 22 18, 22 12 C22 6, 18 2, 12 2 Z" fill="#faf5ee" />
+          <path d="M12 4 L14 10 L20 12 L14 14 L12 20 L10 14 L4 12 L10 10 Z" fill="#c69a4d" />
+        </svg>
+        <div class="gothic-line-segment bottom"></div>
+        <svg class="gothic-ornament" viewBox="0 0 24 24" fill="none" stroke="#c69a4d" stroke-width="1">
+          <path d="M12 2 L21 12 L12 22 L3 12 Z" fill="none" />
+          <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#c69a4d" />
+          <circle cx="12" cy="2" r="1.5" fill="#c69a4d" />
+          <circle cx="12" cy="22" r="1.5" fill="#c69a4d" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- PRINCIPAL SPONSORS (PRIORITY) -->
+    <div class="section-label">
       <h2 class="font-script">Principal Sponsors</h2>
       <p>Witnesses of our forever</p>
     </div>
